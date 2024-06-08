@@ -10,7 +10,7 @@
 
     </header>
     <main>
-        <h1>Hola Mundo en HTML</h1>
+        <h1>¡Hola, mundo desde HTML!</h1>
         <?php
         echo "¡Hola, mundo desde PHP!";
         ?>
