@@ -11,7 +11,9 @@
 <body>
     <header>
         <h1>Dulce Azar</h1>
-        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">    
+        <a href="index.php">
+        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
+        </a>  
     </header>
     <main>
         <div class="div-contenedor">

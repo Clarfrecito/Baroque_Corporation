@@ -11,16 +11,16 @@
 
 <body>
     <main>
-    <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
-        <div class="Inicio de Sesion">
+    <a href="../index.php">
+        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
+        </a>
+       
+            <form action="../Controlador/registrar.php" method="post">
+            <div class="Inicio de Sesion">
             <h2>Inicio de Sesion</h2>
-            <form action="../Vista/juegos.php" method="post">
                 <input type="text" id="username" name="username" required placeholder="Usuario"><br><br>
                 <input type="password" id="password" name="password" required required placeholder="Contraseña"><br><br>
-                <button type="submit" value="Iniciar sesión">Iniciar Sesion</button>
-            </form>
-            <form action="../index.php" method="get">
-                <button type="submit">Menu</button>
+                <button type="submit" name="login">Iniciar Sesion</button>
             </form>
         </div>
     </main>

@@ -76,7 +76,7 @@ input {
   border: 1.5px solid white;
   width: 175px;
 }
-input:hover {
+input:focus {
   color: black;
   background-color: white;
   cursor: pointer;

@@ -70,46 +70,36 @@ class RegistrarControlador
         exit();
     }
 
-    public function login()
-    {
+    public function login() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST["username"];
             $password = $_POST["password"];
-    
-            // Establish database connection
-            $conn = $this->conexion;
-    
-            // Preparar declaración SQL con parámetros
-            $stmt = $conn->prepare("SELECT * FROM usuarios WHERE username=?");
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-    
+            $sql = "SELECT * FROM usuarios WHERE username='$username'";
+            $result = $this ->conexion->query($sql);
             if ($result->num_rows == 1) {
                 $row = $result->fetch_assoc();
                 if (password_verify($password, $row["password"])) {
                     header("Location: ../Vista/juegos.php");
                     exit();
                 } else {
-                    echo "Contraseña incorrecta";
+                    header("Location: ../Vista/contraseña_incorrecta.php");
+                    exit();
                 }
             } else {
-                echo "Usuario no encontrado";
+                header("Location: ../Vista/contraseña_incorrecta.php");
+                exit();
             }
-    
-            // Cerrar la declaración
-            $stmt->close();
         }
     }
-    }
-    
+}
+
 $usuario = new Usuario();
 $conexion = new Conexion();
 
 if (isset($_POST['registrarse'])) {
     $controlador = new RegistrarControlador($usuario, $conexion);
     $controlador->registrar();
-} elseif (isset($_POST['Iniciar Sesion'])) {
+} elseif (isset($_POST['login'])) {
     $controlador = new RegistrarControlador($usuario, $conexion);
     $controlador->login();
 } elseif (isset($_POST['logout'])) {

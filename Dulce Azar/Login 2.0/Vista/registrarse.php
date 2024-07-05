@@ -11,7 +11,9 @@
 
 <body>
     <main>
-    <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
+    <a href="../index.php">
+        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
+        </a>
         <form method="post" action="../Controlador/registrar.php">
             <div >
                 <h1>Registrarse</h1>
@@ -25,9 +27,6 @@
                 <br>
                 <br>
                 <button type=submit name=registrarse>Registrarse</button>
-        </form>
-        <form action="../index.php" method="get">
-            <button type="submit">Menu</button>
         </form>
         </div>
         <?php
