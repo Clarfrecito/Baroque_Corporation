@@ -46,15 +46,23 @@ button {
     align-items: center;
   }
   div {
-    width: 350px;
-    height: 375px;
+    width: 100%; /* Uso de porcentaje para que se ajuste al contenedor */
+    max-width: 350px; /* Ancho máximo */
+    height: auto; /* Ajusta la altura automáticamente */
     padding: 10px;
     justify-content: center;
     align-items: center;
     background-color: #1E1E1E;
     border: 3px solid rgb(255, 255, 255);
     border-radius: 5%;
-  }
+}
+
+@media (min-width: 768px) {
+    div {
+        height: 375px; /* Altura fija para pantallas más grandes */
+    }
+}
+
   .div-contenedor {
     display: flex;
     flex-direction: column;

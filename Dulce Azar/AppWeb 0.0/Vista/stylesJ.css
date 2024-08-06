@@ -95,12 +95,22 @@ button {
     letter-spacing: 0.025em;
     margin-bottom: 30px;
   }
-  img {
-    position: absolute; /* Posiciona la imagen de forma absoluta dentro del contenedor */
-    right: 0; /* Alinea la imagen a la derecha */
-    top: 0; /* Alinea la imagen en la parte superior del contenedor */
-    height: 100px; /* Ajusta la altura de la imagen para que coincida con la del texto h1 */
-    width: auto; /* Mantiene la proporción de la imagen */
+  /*
+  #logo {
+ //   position: absolute; /* Posiciona la imagen de forma absoluta dentro del contenedor 
+    right: 0; /* Alinea la imagen a la derecha 
+    top: 0; /* Alinea la imagen en la parte superior del contenedor 
+    height: 100px; /* Ajusta la altura de la imagen para que coincida con la del texto h1 
+    width: auto; /* Mantiene la proporción de la imagen 
     margin-top: 20px;
     margin-right: 20px;
   }
+  */
+  #fondo  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+
+  }	
