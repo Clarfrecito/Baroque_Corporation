@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
     <title>Inicio de Sesion</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="stylesL.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <main>
-    <a href="../index.php">
-        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" alt="k4u-UAAAAASUVORK5-CYII" border="0">  
+    <header>
+        <a href="../index.php">
+            <img src="../../DulceAzar.png" alt="Logo" >  
         </a>
-       
-            <form action="../Controlador/registrar.php" method="post">
-            <div class="Inicio de Sesion">
-            <h2>Inicio de Sesion</h2>
-                <input type="text" id="username" name="username" required placeholder="Usuario"><br><br>
-                <input type="password" id="password" name="password" required placeholder="Contraseña"><br><br>
-                <button type="submit" name="login">Iniciar Sesion</button>
-            </form>
+    </header>
+    <main>
+        <form action="../Controlador/registrar.php" method="post">
+        <div class="Inicio de Sesion">
+            <h1>Inicio de Sesion</h2>
+            <input type="text" id="username" name="username" required placeholder="Usuario"><br><br>
+            <input type="password" id="password" name="password" required placeholder="Contraseña"><br><br>
+            <button type="submit" name="login">Iniciar Sesion</button>
+        </form>
         </div>
     </main>
 </body>
-
 </html>

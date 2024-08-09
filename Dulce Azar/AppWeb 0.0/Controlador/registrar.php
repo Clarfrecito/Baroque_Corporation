@@ -37,10 +37,12 @@ class RegistrarControlador
                     }
                     $stmt->close();
                 } else {
-                    echo "Los datos ingresados no son válidos.";
+                    header("Location: ../Vista/registro_incorrecto.php");
+                    exit();
                 }
             } else {
-                echo "Por favor complete todos los datos.";
+                header("Location: ../Vista/registro_incorrecto.php");
+                exit();
             }
         } else {
             header("Location: ../Vista/registrarse.php");
@@ -78,11 +80,11 @@ class RegistrarControlador
                     header("Location: ../Vista/juegos.php");
                     exit();
                 } else {
-                    header("Location: ../Vista/contraseña_incorrecta.php");
+                    header("Location: ../Vista/login_incorrecto.php");
                     exit();
                 }
             } else {
-                header("Location: ../Vista/contraseña_incorrecta.php");
+                header("Location: ../Vista/login_incorrecto.php");
                 exit();
             }
             $stmt->close();

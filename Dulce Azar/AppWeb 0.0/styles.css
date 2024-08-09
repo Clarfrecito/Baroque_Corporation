@@ -1,26 +1,22 @@
-:root {
+:root{
   --primary-color: rgb(0, 0, 0);
   --secondary-color: #00BAFF;
   --hover-color: rgb(255, 255, 255);
 }
-
-body {
+body{
   font-family: "Questrial", sans-serif;
   background-color: #1E1E1E;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
   color: #fff;
 }
-
-header {
-  margin-top: 0.5rem;
+header{
+  margin-top: 25px;
 }
-
-main {
+main{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,89 +24,58 @@ main {
   flex: 1;
   padding: 1rem;
 }
-
-
-footer {
-  padding: 10px;
-  background-color: #000;
+footer{
+  margin-top: 100px;
   color: #fff;
   text-align: center;
-  border-top: 1px solid #fff;
 }
-
-button {
+button{
   box-sizing: border-box;
   border: 0;
   border-radius: 20px;
   color: var(--secondary-color);
-  padding: 1em 1.8em;
+  padding: 1rem;
   background: var(--primary-color);
   transition: 0.2s background;
   margin-bottom: 15px;
-  height: 45px;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: auto;
   width: 145px;
   font-size: 15px;
   cursor: pointer;
   text-align: center;
   font-weight: bold;
 }
-
-button:hover {
+button:hover{
   background-color: var(--secondary-color);
   color: var(--hover-color);
 }
-
-.div-contenedor {
+.div-contenedor{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: auto;
   background-color: #1E1E1E;
   border: 3px solid rgb(255, 255, 255);
   border-radius: 5%;
-  box-sizing: border-box;
 }
-
-h1 {
+h1{
   font-size: 2rem;
   font-weight: normal;
   letter-spacing: 0.025em;
 }
-
-h2 {
-  font-size: 1rem;
+h2{
+  font-size: 1,5rem;
   font-weight: normal;
 }
-
-h3 {
+h3{
   font-size: 1rem;
   color: rgb(150, 150, 150);
   font-weight: normal;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20px;
-}
-
-@media (min-width: 768px) {
-  h1 {
-      font-size: 3rem;
-  }
-
-  h2 {
-      font-size: 2rem;
-  }
-
-  h3 {
-      font-size: 1.25rem;
-  }
-
-  button {
-      font-size: 1rem;
-      height: 50px;
-      width: 200px;
-  }
+img{
+  height: 125px;
+  width: auto;
 }
