@@ -1,7 +1,6 @@
 
 <?php
 require_once '../Utiles/verificar_sesion.php';
-// verificar_sesion();
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,7 +8,6 @@ require_once '../Utiles/verificar_sesion.php';
     <title>Menú Principal</title>
     <h1 style="color: #ff0000; font-size: 24px; text-align: center;">Menu Principal</h1>
     <style>
-        /* Estilos CSS para el menú */
         ul {
             list-style-type: none;
             margin: 0;
@@ -39,10 +37,23 @@ require_once '../Utiles/verificar_sesion.php';
     <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
-        <li><a href="#">Servicios</a></li>
         <li><a href="#">Contacto</a></li>
         <li><a href="seleccionar_juegos.php">Juegos</a></li>
     </ul>
     <h3>Baroque-Corporation</h3>
+    <div>
+        <h1>Manchita</h1>
+        
+    </div>
+    <div>
+        <h1>Local Visitante</h1>
+    </div>
+    <div>
+        <h1>Bingo Loco</h1>
+        <img src="../../FondoBingo.PNG" alt="Bingo"></img>
+    </div>
+    <div>
+        <h1>Proximamente</h1>
+    </div>
 </body>
 </html>

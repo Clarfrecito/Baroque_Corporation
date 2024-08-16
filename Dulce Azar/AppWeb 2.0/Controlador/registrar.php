@@ -28,17 +28,23 @@ class RegistrarControlador
                         header("Location: ../Vista/login.php");
                         exit();
                     } else {
-                        echo "<script> alert('Ha ocurrido un error al registrar.');</script>";
-                        //header("Location: ../Vista/registrarse.php");
+                        echo '<script>
+                                alert("Ha ocurrido un error al registrar.");
+                                window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                             </script>';
                     }
                     $stmt->close();
                 } else {
-                    echo "<script> alert('Los datos ingresados no son válidos.');</script>";
-                    //header("Location: ../Vista/registrarse.php");
+                    echo '<script>
+                            alert("Los datos ingresados no son correctos");
+                            window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                         </script>';
                 }
             } else {
-                echo "<script> alert('Por favor complete todos los datos.');</script>";
-                //header("Location: ../Vista/registrarse.php");
+                echo '<script>
+                        alert("Por favor complete todos los datos.");
+                        window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                     </script>';
             }
         } else {
             header("Location: ../Vista/registrarse.php");
@@ -59,7 +65,7 @@ class RegistrarControlador
         }
     }
 
-    public function login() 
+    public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $this->limpiar_cadena($_POST["username"]);
@@ -76,18 +82,23 @@ class RegistrarControlador
                     header("Location: ../Vista/menu_principal.php");
                     exit();
                 } else {
-                    header("Location: ../Vista/contraseña_incorrecta.php");
-                    exit();
+                    echo '<script>
+                            alert("Contraseña incorrecta.");
+                            window.location.href = "http://localhost/AppWeb%202.0/Vista/login.php";
+                         </script>';
                 }
             } else {
-                header("Location: ../Vista/contraseña_incorrecta.php");
-                exit();
+                echo '<script>
+                        alert("Usuario no encotrado.");
+                        window.location.href = "http://localhost/AppWeb%202.0/Vista/login.php";
+                     </script>';
             }
             $stmt->close();
         }
     }
 
-    function verificar_datos($filtro, $cadena) {
+    function verificar_datos($filtro, $cadena)
+    {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
             return true;
         } else {
@@ -95,31 +106,32 @@ class RegistrarControlador
         }
     }
 
-    function limpiar_cadena($cadena){
-        $cadena=trim($cadena);
-        $cadena=stripslashes($cadena);
-        $cadena=str_ireplace("<script>", "", $cadena);
-        $cadena=str_ireplace("</script>", "", $cadena);
-        $cadena=str_ireplace("<script src", "", $cadena);
-        $cadena=str_ireplace("<script type=", "", $cadena);
-        $cadena=str_ireplace("SELECT * FROM", "", $cadena);
-        $cadena=str_ireplace("DELETE FROM", "", $cadena);
-        $cadena=str_ireplace("INSERT INTO", "", $cadena);
-        $cadena=str_ireplace("DROP TABLE", "", $cadena);
-        $cadena=str_ireplace("DROP DATABASE", "", $cadena);
-        $cadena=str_ireplace("TRUNCATE TABLE", "", $cadena);
-        $cadena=str_ireplace("SHOW TABLES;", "", $cadena);
-        $cadena=str_ireplace("SHOW DATABASES;", "", $cadena);
-        $cadena=str_ireplace("<?php", "", $cadena);
-        $cadena=str_ireplace("?>", "", $cadena);
-        $cadena=str_ireplace("--", "", $cadena);
-        $cadena=str_ireplace("^", "", $cadena);
-        $cadena=str_ireplace("<", "", $cadena);
-        $cadena=str_ireplace("[", "", $cadena);
-        $cadena=str_ireplace("]", "", $cadena);
-        $cadena=str_ireplace("==", "", $cadena);
-        $cadena=str_ireplace(";", "", $cadena);
-        $cadena=str_ireplace("::", "", $cadena);
+    function limpiar_cadena($cadena)
+    {
+        $cadena = trim($cadena);
+        $cadena = stripslashes($cadena);
+        $cadena = str_ireplace("<script>", "", $cadena);
+        $cadena = str_ireplace("</script>", "", $cadena);
+        $cadena = str_ireplace("<script src", "", $cadena);
+        $cadena = str_ireplace("<script type=", "", $cadena);
+        $cadena = str_ireplace("SELECT * FROM", "", $cadena);
+        $cadena = str_ireplace("DELETE FROM", "", $cadena);
+        $cadena = str_ireplace("INSERT INTO", "", $cadena);
+        $cadena = str_ireplace("DROP TABLE", "", $cadena);
+        $cadena = str_ireplace("DROP DATABASE", "", $cadena);
+        $cadena = str_ireplace("TRUNCATE TABLE", "", $cadena);
+        $cadena = str_ireplace("SHOW TABLES;", "", $cadena);
+        $cadena = str_ireplace("SHOW DATABASES;", "", $cadena);
+        $cadena = str_ireplace("<?php", "", $cadena);
+        $cadena = str_ireplace("?>", "", $cadena);
+        $cadena = str_ireplace("--", "", $cadena);
+        $cadena = str_ireplace("^", "", $cadena);
+        $cadena = str_ireplace("<", "", $cadena);
+        $cadena = str_ireplace("[", "", $cadena);
+        $cadena = str_ireplace("]", "", $cadena);
+        $cadena = str_ireplace("==", "", $cadena);
+        $cadena = str_ireplace(";", "", $cadena);
+        $cadena = str_ireplace("::", "", $cadena);
         return $cadena;
     }
 }

@@ -33,7 +33,7 @@ verificar_sesion();
                 <h3>¿En qué rango de cartas saldrá la manchita?</h3>
                 <form method="POST" action="../Controlador/manchita.php">
                     <!--<input type="number" name="posicion" min="1" max="50" required>-->
-                    <select name="rango">
+                    <select name="rango" required>
                         <option value="1-10">1-10</option>
                         <option value="11-20">11-20</option>
                         <option value="21-30">21-30</option>

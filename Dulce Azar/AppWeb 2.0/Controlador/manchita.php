@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (isset($_POST['apostar'])) {
         $apuesta = isset($_POST['rango']) ? $_POST['rango'] : null;
         if ($apuesta !== null) {
-            echo "Apostaste por la el rango " . htmlspecialchars($apuesta) . "<br>"; // Protección contra XSS
+            echo "Apostaste por el rango: " . htmlspecialchars($apuesta) . "<br>"; // Protección contra XSS
             $jugar->procesarApuesta($apuesta);
         } else {
             echo "No se ha definido una apuesta.<br>";

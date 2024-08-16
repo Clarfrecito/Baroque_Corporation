@@ -58,6 +58,17 @@ class Manchita extends Juegos
 
     public function procesarApuesta($apuesta)
     {
+        if($apuesta=="1-10"){
+            $apuesta = array(1,2,3,4,5,6,7,8,9,10);
+        } elseif($apuesta=="11-20"){
+            $apuesta = array(11,12,13,14,15,16,17,18,19,20);
+        } elseif($apuesta=="21-30"){
+            $apuesta = array(21,22,23,24,25,26,27,28,29,30);
+        } elseif($apuesta=="31-40"){
+            $apuesta = array(31,32,33,34,35,36,37,38,39,40);
+        } elseif($apuesta=="41-50"){
+            $apuesta = array(41,42,43,44,45,46,47,48,49,50);
+        }
         $cartas = array(
             "1 de Oros",
             "2 de Oros",
@@ -118,11 +129,11 @@ class Manchita extends Juegos
 
             if ($sale == "1 de Oros") {
                 echo "La manchita salió en la posición " . $posicion . "<br>";
-                $ganancia = ($posicion == $apuesta) ? 2000 : -1000;
-                if ($ganancia == 1000) {
+                $ganancia = in_array($posicion, $apuesta) ? 2000 : -1000;
+                if ($ganancia == 2000) {
                     echo "Ganaste<br>";
                     $this->ganancias($ganancia);
-                } else {
+                } elseif ($ganancia == -1000) {
                     echo "Perdiste<br>";
                     $this->ganancias($ganancia);
                 }
