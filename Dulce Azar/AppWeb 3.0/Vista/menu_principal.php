@@ -1,4 +1,3 @@
-
 <?php
 require_once '../Utiles/verificar_sesion.php';
 ?>
@@ -6,54 +5,43 @@ require_once '../Utiles/verificar_sesion.php';
 <html>
 <head>
     <title>Menú Principal</title>
-    <h1 style="color: #ff0000; font-size: 24px; text-align: center;">Menu Principal</h1>
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        li a:hover {
-            background-color: #111;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesM.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h1>Baroque-Corporation</h1>
     <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
         <li><a href="#">Contacto</a></li>
         <li><a href="seleccionar_juegos.php">Juegos</a></li>
     </ul>
-    <h3>Baroque-Corporation</h3>
-    <div>
-        <h1>Manchita</h1>
-        
+    <div class="grid-container">
+        <a href="manchita.php" class="grid-item1">
+        <div class="background-image1">
+                <h1>Manchita</h1>   
+        </div>
+        </a>
+        <a href="manchita.php" class="grid-item2">
+        <div class="background-image2">
+                <h1>Local Visitante</h1>
+        </div>  
+        </a>   
+        <a href="manchita.php" class="grid-item3">      
+        <div class="background-image3">
+                <h1>Bingo Loco</h1>
+        </div>
+        </a>
+        <a href="manchita.php" class="grid-item4">
+        <div class="background-image4">
+                <h1>Proximamente</h1>
+        </div>
+        </a>
     </div>
-    <div>
-        <h1>Local Visitante</h1>
-    </div>
-    <div>
-        <h1>Bingo Loco</h1>
-        <img src="../../FondoBingo.PNG" alt="Bingo"></img>
-    </div>
-    <div>
-        <h1>Proximamente</h1>
-    </div>
+    <form method="POST" action="../Controlador/registrar.php">
+            <button type="submit" name="logout">Cerrar Sesión</button>
+        </form> 
 </body>
 </html>

@@ -14,16 +14,14 @@ body{
   color: #fff;
 }
 header{
-  margin-top: 25px;
+  margin-top: 5px;
 }
 main{
+  margin-top: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  padding: 1rem;
-  margin-top: 45px;
 }
 footer{
   margin-top: 100px;
@@ -66,10 +64,6 @@ h1{
   font-size: 2rem;
   font-weight: normal;
   letter-spacing: 0.025em;
-}
-h2{
-  font-size: 1,5rem;
-  font-weight: normal;
 }
 h3{
   font-size: 1rem;

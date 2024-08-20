@@ -15,8 +15,8 @@
     </header>
     <main>
         <form action="../Controlador/registrar.php" method="post">
-        <div class="Inicio de Sesion">
-            <h1>Inicio de Sesion</h2>
+        <div class="div-contenedor">
+            <h1>Inicio de Sesion</h1>
             <input type="text" id="username" name="username" required placeholder="Usuario"><br><br>
             <input type="password" id="password" name="password" required placeholder="Contraseña"><br><br>
             <button type="submit" name="login">Iniciar Sesion</button>

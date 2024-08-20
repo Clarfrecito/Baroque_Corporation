@@ -15,7 +15,7 @@
     </header>
     <main>
         <form method="post" action="../Controlador/registrar.php">
-        <div>
+        <div class="div-contenedor">
             <h1>Registrarse</h1>
             <input type="text" name="username" required placeholder="Nombre completo">
             <br>
@@ -30,5 +30,8 @@
         </form>
         </div>
     </main>
+    <footer>
+        <h3>2024 Dulce Azar. Creado por Baroque Corporation.</h3>
+    </footer>
 </body>
 </html>

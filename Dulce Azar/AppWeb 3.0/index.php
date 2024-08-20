@@ -13,13 +13,13 @@
     </header>
     <main>
         <div class="div-contenedor">
-            <h2>Menú<h2>
-                    <form action="Vista/registrarse.php" method="get">
-                        <button type="submit">Registrarse</button>
-                    </form>
-                    <form action="Vista/login.php" method="get">
-                        <button type="submit" value="Iniciar sesión">Iniciar Sesion</button>
-                    </form>
+            <h1>Menú<h1>
+            <form action="Vista/registrarse.php" method="get">
+                <button type="submit">Registrarse</button>
+            </form>
+            <form action="Vista/login.php" method="get">
+                <button type="submit" value="Iniciar sesión">Iniciar Sesion</button>
+            </form>
         </div>
     </main>
     <footer>
