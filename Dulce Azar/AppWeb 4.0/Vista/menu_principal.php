@@ -11,20 +11,21 @@ require_once '../Utiles/verificar_sesion.php';
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Baroque-Corporation</h1>
+    <img src="../../DulceAzar.png" alt="Logo" id="Logo">  
+    <h1>Dulce Azar</h1>
     <ul>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Acerca de</a></li>
         <li><a href="#">Contacto</a></li>
-        <li><a href="seleccionar_juegos.php">Juegos</a></li>
+        <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
     </ul>
     <div class="grid-container">
-        <a href="manchita.php" class="grid-item1">
+        <a href="seleccionar_juegos.php"" class="grid-item1">
         <div class="background-image1">
                 <h1>Manchita</h1>   
         </div>
         </a>
-        <a href="manchita.php" class="grid-item2">
+        <a href="seleccionar_juegos.php" class="grid-item2">
         <div class="background-image2">
                 <h1>Local Visitante</h1>
         </div>  
@@ -40,8 +41,53 @@ require_once '../Utiles/verificar_sesion.php';
         </div>
         </a>
     </div>
-    <form method="POST" action="../Controlador/registrar.php">
-            <button type="submit" name="logout">Cerrar Sesión</button>
-        </form> 
+    <!-- Elemento de audio -->
+    <audio id="background-music" autoplay loop>
+        <source src="../../musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <!-- Script original -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-music');
+            // Recuperar la última posición guardada desde localStorage
+            var savedTime = localStorage.getItem('audioTime');
+            if (savedTime !== null) {
+                audio.currentTime = parseFloat(savedTime);
+            }
+            // Intentar reproducir el audio automáticamente
+            audio.play().catch(function(error) {
+                console.error('El audio no se pudo reproducir automáticamente:', error);
+            });
+            // Guardar la posición actual del audio en localStorage cada vez que cambie
+            audio.addEventListener('timeupdate', function() {
+                localStorage.setItem('audioTime', audio.currentTime);
+            });
+            // Escuchar cambios en localStorage para sincronizar entre ventanas/pestañas
+            window.addEventListener('storage', function(event) {
+                if (event.key === 'audioTime') {
+                    audio.currentTime = parseFloat(event.newValue);
+                }
+            });
+            // Guardar la posición cuando el usuario deja la página
+            window.addEventListener('beforeunload', function() {
+                localStorage.setItem('audioTime', audio.currentTime);
+            });
+        });
+    </script>
+    <!-- Script adicional para manejar la interacción del usuario -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('background-music');
+            // Intentar reproducir el audio automáticamente con manejo de interacción
+            function tryToPlayAudio() {
+                audio.play().catch(function(error) {
+                    console.log('El audio no se pudo reproducir automáticamente, esperando interacción del usuario.');
+                    document.body.addEventListener('click', tryToPlayAudio);
+                });
+            }
+            tryToPlayAudio();
+        });
+    </script>
 </body>
 </html>

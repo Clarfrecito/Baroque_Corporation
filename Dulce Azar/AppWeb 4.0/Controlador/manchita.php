@@ -2,18 +2,14 @@
 require_once '../Modelo/conex_bd.php';
 require_once '../Modelo/manchita.php';
 require_once '../Utiles/verificar_sesion.php';
-
 verificar_sesion();
-
 class ManchitaControlador extends Manchita {
     public function __construct($conexion) {
         parent::__construct($conexion);
     }
 }
-
 $conexion = new Conexion(); 
 $jugar = new ManchitaControlador($conexion->conectar());
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['jugarManchita'])) {
         $jugar->encontrarManchita();
@@ -27,4 +23,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-    

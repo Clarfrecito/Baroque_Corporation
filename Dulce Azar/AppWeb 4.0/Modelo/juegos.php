@@ -1,11 +1,9 @@
 <?php
 require_once 'conex_bd.php';
 require_once 'usuario.php';
-
 class Juegos extends Usuario
 {
     private $conexion;
-
     public function __construct($conexion)
     {
         $this->conexion = $conexion;
@@ -30,12 +28,10 @@ class Juegos extends Usuario
                 $stmt->bind_param("s", $nombre);
                 $stmt->execute();
                 $result = $stmt->get_result();
-
                 if ($result->num_rows > 0) {
                     // Si el juego ya existe, actualiza su estado
                     $row = $result->fetch_assoc();
                     $id_juego = $row['id'];
-
                     $sql_update = "UPDATE juegos SET estado = ? WHERE id = ?";
                     $stmt_update = $this->conexion->prepare($sql_update);
                     $stmt_update->bind_param("si", $estado, $id_juego);
@@ -66,9 +62,6 @@ class Juegos extends Usuario
         }
         return null;
     }
-
-
-
     public function actualizarEstadoJuego($id_juego, $estado)
     {
         $stmt = $this->conexion->prepare("UPDATE juegos SET estado = ? WHERE id = ?");
@@ -102,5 +95,4 @@ class Juegos extends Usuario
             unset($_SESSION['nombre_juego']);
         }
     }
-
 }

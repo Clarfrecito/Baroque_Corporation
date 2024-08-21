@@ -2,7 +2,6 @@
 class Conexion
 {
     private static $conexion = null;
-
     public static function conectar()
     {
         if (self::$conexion == null) {
@@ -17,7 +16,6 @@ class Conexion
         }
         return self::$conexion;
     }
-
     public static function cerrar()
     {
         if (self::$conexion != null) {

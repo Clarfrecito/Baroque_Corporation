@@ -10,10 +10,8 @@ class JuegosControlador extends Juegos
         parent::__construct($conexion);
     }
 }
-
 $conexion = new Conexion();
 $juegosControlador = new JuegosControlador($conexion->conectar());
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['manchita'])) {
         $nombre_juego = "Manchita";
@@ -31,4 +29,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 }
-

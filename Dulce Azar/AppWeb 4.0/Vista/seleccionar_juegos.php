@@ -2,14 +2,9 @@
 require_once '../Utiles/verificar_sesion.php';
 verificar_sesion();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!--
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    -->
     <title>Juegos</title>
 </head>
 <body>

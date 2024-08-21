@@ -54,5 +54,4 @@ verificar_sesion();
     <footer>
     </footer>
 </body>
-
 </html>

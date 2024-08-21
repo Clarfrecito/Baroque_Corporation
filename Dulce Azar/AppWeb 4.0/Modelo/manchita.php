@@ -6,31 +6,26 @@ verificar_sesion();
 class Manchita extends Juegos
 {
     private $conexion;
-
     public function __construct($conexion)
     {
         parent::__construct($conexion);
         $this->conexion = $conexion;
     }
-
     public function encontrarManchita()
     {
         $caramelos = 1000;
         $usuario = $_SESSION['username'];
-
         // Primero, verificar si el usuario ya existe en la tabla manchita
         $sql = "SELECT id FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("s", $usuario);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) {
             // El usuario ya existe, así que actualiza la fila con los nuevos caramelos
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $caramelos, $usuario);
-
             if ($stmt->execute()) {
                 // Redirigir al usuario después de la actualización
                 header("Location: ../Vista/manchita.php?jugar=1");
@@ -52,10 +47,8 @@ class Manchita extends Juegos
                 echo "Error al insertar el registro: " . $stmt->error;
             }
         }
-
         $stmt->close();
     }
-
     public function procesarApuesta($apuesta)
     {
         if($apuesta=="1-10"){
@@ -121,12 +114,10 @@ class Manchita extends Juegos
             "Comodin 1",
             "Comodin 2"
         );
-
         for ($i = 0; $i < 50; $i++) {
             $numero = rand(0, 49);
             $sale = $cartas[$numero];
             $posicion = $i + 1;
-
             if ($sale == "1 de Oros") {
                 echo "La manchita salió en la posición " . $posicion . "<br>";
                 $ganancia = in_array($posicion, $apuesta) ? 2000 : -1000;
@@ -144,39 +135,31 @@ class Manchita extends Juegos
             }
         }
     }
-
     public function ganancias($ganancia)
     {
         $username = $_SESSION["username"];
-
         // Determinar la cantidad de caramelos a sumar o restar
         $caramelos = $ganancia;
-
         // Imprimir valores para depuración
         echo "Ganancia: " . $ganancia . "<br>";
         echo "Caramelos a sumar/restar: " . $caramelos . "<br>";
-
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if ($result->num_rows > 0) {
             // El usuario ya tiene un registro, actualizar la cantidad de caramelos
             $row = $result->fetch_assoc();
             $currentCaramelos = $row['caramelos'];
             $newCaramelos = $currentCaramelos + $caramelos;
-
             // Imprimir valores para depuración
             echo "Caramelos actuales: " . $currentCaramelos . "<br>";
             echo "Caramelos nuevos: " . $newCaramelos . "<br>";
-
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $username);
-
             if ($stmt->execute()) {
                 echo "Caramelos actualizados correctamente: " . $newCaramelos . "<br>";
             } else {
@@ -194,11 +177,6 @@ class Manchita extends Juegos
                 echo "Error al crear el registro: " . $stmt->error;
             }
         }
-
         $stmt->close();
     }
-
-
-
 }
-

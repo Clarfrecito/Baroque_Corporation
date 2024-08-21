@@ -1,3 +1,8 @@
+:root{
+  --primary-color: rgb(0, 0, 0);
+  --secondary-color: #00BAFF;
+  --hover-color: rgb(255, 255, 255);
+}
 body{
   font-family: "Questrial", sans-serif;
   background-color: #1E1E1E;
@@ -122,4 +127,91 @@ li a:hover {
   grid-template-columns: 1fr 1fr; /* 2 columnas de igual tamaño */
   gap: 25px; /* Espacio entre los elementos de la grilla */
   margin-top: 10px;
+}
+#Logo{
+    margin-top: 10px;
+    height: 10%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+li body {
+  font-family: "Questrial", sans-serif;
+  background-color: #1E1E1E;
+  color: white;
+}
+#logo-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+#Logo {
+  height: 50px; /* Ajusta la altura del logo según sea necesario */
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas de igual tamaño */
+  gap: 25px; /* Espacio entre los elementos de la grilla */
+  margin-top: 10px;
+}
+.grid-item {
+  box-sizing: border-box;
+  border: 0;
+  transition: 0.2s background, 0.2s transform;
+  height: auto;
+  width: auto;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #444; /* Color de fondo inicial */
+  color: white; /* Color del texto inicial */
+}
+.grid-item:hover {
+  font-weight: bold;
+  color: black;
+  background-color: #666; /* Color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}
+h1 {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.025em;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li {
+  float: left;
+}
+li a, li button {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+li a:hover, li button:hover {
+  background-color: #111;
+  text-decoration: none; /* Asegura que no haya subrayado al hacer hover */
+}button{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+li button:hover{
+  background-color: #111;
+  text-decoration: none; /* Asegura que no haya subrayado al hacer hover */
 }

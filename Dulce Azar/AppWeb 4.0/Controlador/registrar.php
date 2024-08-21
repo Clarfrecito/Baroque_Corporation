@@ -3,7 +3,6 @@ session_start();
 require_once '../Modelo/usuario.php';
 require_once '../Modelo/conex_bd.php';
 require_once '../Utiles/verificar_sesion.php';
-
 class RegistrarControlador
 {
     private $conexion;
@@ -30,20 +29,20 @@ class RegistrarControlador
                     } else {
                         echo '<script>
                                 alert("Ha ocurrido un error al registrar.");
-                                window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                                window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                              </script>';
                     }
                     $stmt->close();
                 } else {
                     echo '<script>
                             alert("Los datos ingresados no son correctos");
-                            window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                            window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                          </script>';
                 }
             } else {
                 echo '<script>
                         alert("Por favor complete todos los datos.");
-                        window.location.href = "http://localhost/AppWeb%202.0/Vista/registrarse.php";
+                        window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                      </script>';
             }
         } else {
@@ -51,7 +50,6 @@ class RegistrarControlador
             exit();
         }
     }
-
     public function logout()
     {
         if (isset($_POST['logout'])) {
@@ -64,13 +62,11 @@ class RegistrarControlador
             exit();
         }
     }
-
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $this->limpiar_cadena($_POST["username"]);
             $password = $_POST["password"];
-
             $stmt = $this->conexion->prepare("SELECT * FROM usuarios WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
@@ -84,19 +80,18 @@ class RegistrarControlador
                 } else {
                     echo '<script>
                             alert("Contraseña incorrecta.");
-                            window.location.href = "http://localhost/AppWeb%202.0/Vista/login.php";
+                            window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
                          </script>';
                 }
             } else {
                 echo '<script>
                         alert("Usuario no encotrado.");
-                        window.location.href = "http://localhost/AppWeb%202.0/Vista/login.php";
+                        window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
                      </script>';
             }
             $stmt->close();
         }
     }
-
     function verificar_datos($filtro, $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
@@ -105,7 +100,6 @@ class RegistrarControlador
             return false;
         }
     }
-
     function limpiar_cadena($cadena)
     {
         $cadena = trim($cadena);
@@ -135,7 +129,6 @@ class RegistrarControlador
         return $cadena;
     }
 }
-
 $conexion = new Conexion();
 if (isset($_POST['registrarse'])) {
     $controlador = new RegistrarControlador($conexion);

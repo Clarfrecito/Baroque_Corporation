@@ -4,9 +4,7 @@ require_once 'juegos.php';
 require_once '../Utiles/verificar_sesion.php';
 verificar_sesion();
 class LocalVisitanteControlador extends LocalVisitante{
-
     private $conexion;
-
     public function __construct($conexion)
     {
         parent::__construct($conexion);
