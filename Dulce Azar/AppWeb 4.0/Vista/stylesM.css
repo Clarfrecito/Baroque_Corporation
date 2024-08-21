@@ -1,0 +1,125 @@
+body{
+  font-family: "Questrial", sans-serif;
+  background-color: #1E1E1E;
+  color:white;
+}
+.grid-item1:hover {
+  color: white;
+  transform: scale(1.025);
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoManchita.PNG');
+}
+.grid-item2:hover {
+  color: white;
+  transform: scale(1.025);
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)) ,url('../../FondoLV.PNG');
+}
+.grid-item3:hover {
+  color: white;
+  transform: scale(1.025);
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoBingo.PNG');
+}
+.grid-item4:hover {
+  color: white;
+  transform: scale(1.025);
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoSlot.PNG');
+}
+h1{
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.025em;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li{
+  float: left;
+}
+li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+li a:hover {
+  background-color: #111;
+  text-decoration: none; /* Asegura que no haya subrayado al hacer hover */
+}
+.grid-item1{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoManchita.PNG');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */ 
+  border: 3px solid rgb(255, 255, 255);
+  height: 225px;
+  width: 650px;
+  transition: 0.2s background, 0.2s transform;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.grid-item2{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoLV.PNG');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */
+  border: 3px solid rgb(255, 255, 255);
+  height: 225px;
+  width: 650px;
+  transition: 0.2s background, 0.2s transform;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  }
+.grid-item3{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoBingo.PNG');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */
+  border: 3px solid rgb(255, 255, 255);
+  height: 225px;
+  width: 650px;
+  transition: 0.2s background, 0.2s transform;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.grid-item4{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoSlot.PNG');
+  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
+  background-position: center; /* Centra la imagen */
+  border: 3px solid rgb(255, 255, 255);
+  height: 225px;
+  width: 650px;
+  transition: 0.2s background, 0.2s transform;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas de igual tamaño */
+  gap: 25px; /* Espacio entre los elementos de la grilla */
+  margin-top: 10px;
+}
