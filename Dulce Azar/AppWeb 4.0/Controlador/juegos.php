@@ -12,20 +12,24 @@ class JuegosControlador extends Juegos
 }
 $conexion = new Conexion();
 $juegosControlador = new JuegosControlador($conexion->conectar());
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['manchita'])) {
-        $nombre_juego = "Manchita";
-        $juegosControlador->iniciarJuego($nombre_juego);
-        header("Location: ../Vista/manchita.php");
-        exit();
-    } elseif (isset($_POST['local/visitante'])) {
-        $nombre_juego = "Local/Visitante";
-        $juegosControlador->iniciarJuego($nombre_juego);
-        header("Location: ../Vista/local_visitante.php");
-        exit();
-    } elseif (isset($_POST['FinalizarJuego']) || !isset($_SESSION['username'])) {
-        $juegosControlador->finalizarJuego();
-        header("Location: ../Vista/seleccionar_juegos.php");
-        exit();
-    }
+//iniciar el juego sin seleccionar_juegos.php
+if (isset($_GET['juego1'])) {
+    $nombre_juego = $_GET['juego1'];
+    $juegosControlador->iniciarJuego($nombre_juego);
+    header("Location: ../Vista/manchita.php");
+    exit();
+} elseif (isset($_GET['juego2'])) {
+    $nombre_juego = $_GET['juego2'];
+    $juegosControlador->iniciarJuego($nombre_juego);
+    header("Location: ../Vista/local_visitante.php");
+    exit();
+} elseif (isset($_GET['juego2'])) {
+    $nombre_juego = $_GET['juego2'];
+    $juegosControlador->iniciarJuego($nombre_juego);
+    //header("Location: ../Vista/local_visitante.php");
+    exit();
+} elseif (isset($_POST['FinalizarJuego']) || !isset($_SESSION['username'])) {
+    $juegosControlador->finalizarJuego();
+    header("Location: ../Vista/menu_principal.php");
+    exit();
 }

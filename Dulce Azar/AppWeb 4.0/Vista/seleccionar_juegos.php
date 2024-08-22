@@ -29,7 +29,7 @@ verificar_sesion();
                 <input type="submit" value="Jugar Manchita" name="manchita">
             </form>
         </div>
-        <!-- Agregar otros juegos aca -->
+            
         <div>
             <h1>En Desarrollo</h1>
         </div>

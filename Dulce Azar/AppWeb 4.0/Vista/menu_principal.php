@@ -20,12 +20,12 @@ require_once '../Utiles/verificar_sesion.php';
         <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
     </ul>
     <div class="grid-container">
-        <a href="seleccionar_juegos.php"" class="grid-item1">
+        <a href="../Controlador/juegos.php?juego1=manchita" class="grid-item1">
         <div class="background-image1">
                 <h1>Manchita</h1>   
         </div>
         </a>
-        <a href="seleccionar_juegos.php" class="grid-item2">
+        <a href="../Controlador/juegos.php?juego2=Local/Visitante" class="grid-item2">
         <div class="background-image2">
                 <h1>Local Visitante</h1>
         </div>  
@@ -35,7 +35,7 @@ require_once '../Utiles/verificar_sesion.php';
                 <h1>Bingo Loco</h1>
         </div>
         </a>
-        <a href="manchita.php" class="grid-item4">
+        <a href="#" class="grid-item4">
         <div class="background-image4">
                 <h1>Proximamente</h1>
         </div>

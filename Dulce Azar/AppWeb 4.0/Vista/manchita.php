@@ -42,16 +42,18 @@ verificar_sesion();
                     </select>
                     <input type="submit" name="apostar" value="Apostar">
                 </form>
-            <?php
+                <br>
+                <form method="POST" action="../Controlador/juegos.php">
+                    <input type="submit" name="FinalizarJuego" value="Finalizar Juego">
+                </form>
+                <?php
             }
             ?>
         </div>
         <br><br>
-        <form method="POST" action="../Controlador/juegos.php">
-            <input type="submit" name="FinalizarJuego" value="Finalizar Juego">
-        </form>
     </main>
     <footer>
     </footer>
 </body>
+
 </html>

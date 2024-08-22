@@ -51,16 +51,16 @@ class Manchita extends Juegos
     }
     public function procesarApuesta($apuesta)
     {
-        if($apuesta=="1-10"){
-            $apuesta = array(1,2,3,4,5,6,7,8,9,10);
-        } elseif($apuesta=="11-20"){
-            $apuesta = array(11,12,13,14,15,16,17,18,19,20);
-        } elseif($apuesta=="21-30"){
-            $apuesta = array(21,22,23,24,25,26,27,28,29,30);
-        } elseif($apuesta=="31-40"){
-            $apuesta = array(31,32,33,34,35,36,37,38,39,40);
-        } elseif($apuesta=="41-50"){
-            $apuesta = array(41,42,43,44,45,46,47,48,49,50);
+        if ($apuesta == "1-10") {
+            $apuesta = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        } elseif ($apuesta == "11-20") {
+            $apuesta = array(11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+        } elseif ($apuesta == "21-30") {
+            $apuesta = array(21, 22, 23, 24, 25, 26, 27, 28, 29, 30);
+        } elseif ($apuesta == "31-40") {
+            $apuesta = array(31, 32, 33, 34, 35, 36, 37, 38, 39, 40);
+        } elseif ($apuesta == "41-50") {
+            $apuesta = array(41, 42, 43, 44, 45, 46, 47, 48, 49, 50);
         }
         $cartas = array(
             "1 de Oros",
@@ -114,10 +114,16 @@ class Manchita extends Juegos
             "Comodin 1",
             "Comodin 2"
         );
+
         for ($i = 0; $i < 50; $i++) {
-            $numero = rand(0, 49);
+            if (count($cartas) == 0) {
+                break;
+            }
+            $numero = rand(0, count($cartas) - 1);
             $sale = $cartas[$numero];
+            array_splice($cartas, $numero, 1);
             $posicion = $i + 1;
+            echo "Posición $posicion: $sale<br>";
             if ($sale == "1 de Oros") {
                 echo "La manchita salió en la posición " . $posicion . "<br>";
                 $ganancia = in_array($posicion, $apuesta) ? 2000 : -1000;
@@ -130,8 +136,6 @@ class Manchita extends Juegos
                 }
                 echo $ganancia;
                 return;
-            } else {
-                echo "Posición " . $posicion . ": " . $sale . "<br>";
             }
         }
     }
@@ -180,3 +184,25 @@ class Manchita extends Juegos
         $stmt->close();
     }
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action=../Vista/manchita.php>
+        <div class="botonJugar">
+            <button>Volver a Jugar</button>
+        </div>
+    </form>
+    <form method="POST" action="../Controlador/juegos.php">
+            <input type="submit" name="FinalizarJuego" value="Finalizar Juego">
+    </form>
+</body>
+
+</html>
