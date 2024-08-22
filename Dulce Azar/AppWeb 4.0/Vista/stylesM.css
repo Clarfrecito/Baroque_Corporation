@@ -11,22 +11,22 @@ body{
 .grid-item1:hover {
   color: white;
   transform: scale(1.025);
-  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoManchita.PNG');
+  background-image: linear-gradient(#0300d8 0%, rgba(0, 0, 0, 0.9) 100%), url('../../FondoManchita.PNG');
 }
 .grid-item2:hover {
   color: white;
   transform: scale(1.025);
-  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)) ,url('../../FondoLV.PNG');
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.9)) ,url('../../FondoLV.PNG');
 }
 .grid-item3:hover {
   color: white;
   transform: scale(1.025);
-  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoBingo.PNG');
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.9)),url('../../FondoBingo.PNG');
 }
 .grid-item4:hover {
   color: white;
   transform: scale(1.025);
-  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.5)),url('../../FondoSlot.PNG');
+  background-image: linear-gradient(#0300d8, rgba(0, 0, 0, 0.9)),url('../../FondoSlot.PNG');
 }
 h1{
   font-size: 2rem;
@@ -55,7 +55,7 @@ li a:hover {
   text-decoration: none; /* Asegura que no haya subrayado al hacer hover */
 }
 .grid-item1{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoManchita.PNG');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoManchita.PNG');
   background-size: cover; /* Ajusta la imagen para cubrir todo el div */
   background-position: center; /* Centra la imagen */ 
   border: 3px solid rgb(255, 255, 255);
@@ -72,7 +72,7 @@ li a:hover {
   border-radius: 10px;
 }
 .grid-item2{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoLV.PNG');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoLV.PNG');
   background-size: cover; /* Ajusta la imagen para cubrir todo el div */
   background-position: center; /* Centra la imagen */
   border: 3px solid rgb(255, 255, 255);
@@ -89,7 +89,7 @@ li a:hover {
   border-radius: 10px;
   }
 .grid-item3{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoBingo.PNG');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoBingo.PNG');
   background-size: cover; /* Ajusta la imagen para cubrir todo el div */
   background-position: center; /* Centra la imagen */
   border: 3px solid rgb(255, 255, 255);
@@ -106,7 +106,7 @@ li a:hover {
   border-radius: 10px;
 }
 .grid-item4{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../FondoSlot.PNG');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoSlot.PNG');
   background-size: cover; /* Ajusta la imagen para cubrir todo el div */
   background-position: center; /* Centra la imagen */
   border: 3px solid rgb(255, 255, 255);
@@ -129,7 +129,7 @@ li a:hover {
   margin-top: 10px;
 }
 #Logo{
-    margin-top: 10px;
+    margin-top: 13.5px;
     height: 10%;
     position: absolute;
     top: 0;

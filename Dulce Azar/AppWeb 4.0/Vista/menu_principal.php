@@ -22,22 +22,22 @@ require_once '../Utiles/verificar_sesion.php';
     <div class="grid-container">
         <a href="../Controlador/juegos.php?juego1=manchita" class="grid-item1">
         <div class="background-image1">
-                <h1>Manchita</h1>   
+                <h1><strong>MANCHITA</strong></h1>   
         </div>
         </a>
         <a href="../Controlador/juegos.php?juego2=Local/Visitante" class="grid-item2">
         <div class="background-image2">
-                <h1>Local Visitante</h1>
+                <h1><strong>LOCAL VISITANTE</strong></h1>
         </div>  
         </a>   
         <a href="manchita.php" class="grid-item3">      
         <div class="background-image3">
-                <h1>Bingo Loco</h1>
+                <h1><strong>BINGO LOCO</strong></h1>
         </div>
         </a>
         <a href="#" class="grid-item4">
         <div class="background-image4">
-                <h1>Proximamente</h1>
+                <h1><strong>PROXIMAMENTE</strong></h1>
         </div>
         </a>
     </div>
