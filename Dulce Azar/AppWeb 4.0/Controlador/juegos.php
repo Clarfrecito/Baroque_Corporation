@@ -28,7 +28,7 @@ if (isset($_GET['juego1'])) {
     $juegosControlador->iniciarJuego($nombre_juego);
     //header("Location: ../Vista/local_visitante.php");
     exit();
-} elseif (isset($_POST['FinalizarJuego']) || !isset($_SESSION['username'])) {
+} elseif (isset($_POST['FinalizarJuego']) || isset($_POST['logout'])) {//QUE CIERRE EL JUEGO AL CERRAR SESION
     $juegosControlador->finalizarJuego();
     header("Location: ../Vista/menu_principal.php");
     exit();
