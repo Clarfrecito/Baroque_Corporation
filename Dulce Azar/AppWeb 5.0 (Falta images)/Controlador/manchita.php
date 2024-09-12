@@ -9,15 +9,15 @@ class ManchitaControlador extends Manchita {
     }
 }
 $conexion = new Conexion(); 
-$jugar = new ManchitaControlador($conexion->conectar());
+$controlador = new ManchitaControlador($conexion->conectar());
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['jugarManchita'])) {
-        $jugar->encontrarManchita();
+        $controlador->conectarUsuario();
     } elseif (isset($_POST['apostar'])) {
         $apuesta = isset($_POST['rango']) ? $_POST['rango'] : null;
         if ($apuesta !== null) {
-            echo "Apostaste por el rango: " . htmlspecialchars($apuesta) . "<br>"; // Protección contra XSS
-            $jugar->procesarApuesta($apuesta);
+            echo "Apostaste por el rango: " . htmlspecialchars($apuesta) . "<br>"; 
+            $controlador->procesarApuesta($apuesta);
         } else {
             echo "No se ha definido una apuesta.<br>";
         }

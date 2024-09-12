@@ -1,40 +1,55 @@
+<?php
+require_once '../Utiles/verificar_sesion.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Local vs Visitante</title>
+    <title>Menú Principal</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="stylesLV.css">
+    <link rel="stylesheet" href="stylesM.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <!--
-        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" id="Logo" border="0">
-        -->
-    </header>
-    <main>
-        <h1>Local/Visitante</h1>
-        <div>
-            <h2>Juega al L/V</h2>
-            <form method="POST" action="../Controlador/local_visitante.php">
-                <input type="submit" value="Jugar L/V" name="local_visitante">
-            </form>
+    <img src="../../DulceAzar.png" alt="Logo" id="Logo">  
+    <h1>Dulce Azar</h1>
+    <ul>
+        <li><a href="acerca.php">Acerca de</a></li>
+        <li><a href="perfil.php">Perfil</a></li>
+
+        <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
+    </ul>
+    <div class="grid-container">
+        <a href="../Controlador/juegos.php?juego1=manchita" class="grid-item1">
+        <div class="background-image1">
+                <h1><strong>MANCHITA</strong></h1>   
         </div>
-        <br><br>
-        <form method="POST" action="../Controlador/juegos.php">
-            <input type="submit" name="FinalizarJuego" value="Finalizar Juego">
-        </form>
-    </main>
-    <footer>
-        <h3>2024 Dulce Azar. Creado por Baroque Corporation.</h3>
-    </footer>
+        </a>
+        <a href="../Controlador/juegos.php?juego2=Local/Visitante" class="grid-item2">
+        <div class="background-image2">
+                <h1><strong>LOCAL VISITANTE</strong></h1>
+        </div>  
+        </a>   
+        <a href="manchita.php" class="grid-item3">      
+        <div class="background-image3">
+                <h1><strong>BINGO LOCO</strong></h1>
+        </div>
+        </a>
+        <a href="#" class="grid-item4">
+        <div class="background-image4">
+                <h1><strong>PROXIMAMENTE</strong></h1>
+        </div>
+        </a>
+    </div>
+    <!-- Elemento de audio -->
     <audio id="background-music" autoplay loop>
         <source src="../../musica.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-    <!-- Script original -->
-    <script>
+
+</div>
+ <!-- Script original -->
+ <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
             // Recuperar la última posición guardada desde localStorage

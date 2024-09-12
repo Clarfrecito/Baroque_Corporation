@@ -3,142 +3,26 @@ require_once 'conex_bd.php';
 require_once 'juegos.php';
 require_once '../Utiles/verificar_sesion.php';
 verificar_sesion();
-
-class LocalVisitante extends Juegos
+class Manchita extends Juegos
 {
     private $conexion;
-
     public function __construct($conexion)
     {
         parent::__construct($conexion);
         $this->conexion = $conexion;
     }
-
-    public function procesarApuesta($apuesta)
-    {
-        // Definir las cartas y sus valores según el truco en un solo array asociativo
-        $cartas = array(
-            "1 de Espadas" => 14,
-            "1 de Bastos" => 13,
-            "7 de Espadas" => 12,
-            "7 de Oros" => 11,
-            "3 de Oros" => 10,
-            "3 de Copas" => 10,
-            "3 de Espadas" => 10,
-            "3 de Bastos" => 10,
-            "2 de Oros" => 9,
-            "2 de Copas" => 9,
-            "2 de Espadas" => 9,
-            "2 de Bastos" => 9,
-            "1 de Copas" => 8,
-            "1 de Oros" => 8,
-            "12 de Oros" => 7,
-            "12 de Copas" => 7,
-            "12 de Espadas" => 7,
-            "12 de Bastos" => 7,
-            "11 de Oros" => 6,
-            "11 de Copas" => 6,
-            "11 de Espadas" => 6,
-            "11 de Bastos" => 6,
-            "10 de Oros" => 5,
-            "10 de Copas" => 5,
-            "10 de Espadas" => 5,
-            "10 de Bastos" => 5,
-            "7 de Copas" => 4,
-            "7 de Bastos" => 4,
-            "6 de Oros" => 3,
-            "6 de Copas" => 3,
-            "6 de Espadas" => 3,
-            "6 de Bastos" => 3,
-            "5 de Oros" => 2,
-            "5 de Copas" => 2,
-            "5 de Espadas" => 2,
-            "5 de Bastos" => 2,
-            "4 de Oros" => 1,
-            "4 de Copas" => 1,
-            "4 de Espadas" => 1,
-            "4 de Bastos" => 1
-        );
-
-        $cartas_sacadas = array();
-        $posiciones = array("Local", "Visitante");
-
-        for ($i = 0; $i < 2; $i++) {
-            if (count($cartas) == 0) {
-                break;
-            }
-            $numero = array_rand($cartas);
-            $sale = $numero;
-            $valor = $cartas[$numero];
-            unset($cartas[$numero]);
-            $cartas_sacadas[] = array("carta" => $sale, "valor" => $valor);
-            echo " {$posiciones[$i]}: $sale<br>";
-        }
-
-        // Verificar si las dos cartas tienen el mismo valor
-        if ($cartas_sacadas[0]['valor'] === $cartas_sacadas[1]['valor']) {
-            $carta_ganadora=null;
-            $empate = "Empate";
-        } else {
-            // Determinar la carta ganadora
-            $carta_ganadora = null;
-            $valor_maximo = -1;
-            $posicion_ganadora = null;
-            foreach ($cartas_sacadas as $index => $carta) {
-                if ($carta['valor'] > $valor_maximo) {
-                    $valor_maximo = $carta['valor'];
-                    $carta_ganadora = $carta['carta'];
-                    $posicion_ganadora = $posiciones[$index];
-                }
-            }
-        }
-        if ($carta_ganadora !== null) {
-            echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
-            if ($posicion_ganadora == "Local") {
-                $ganancia = ($apuesta == $posicion_ganadora) ? 2000 : -1000;
-                if ($ganancia == 2000) {
-                    echo "Ganaste<br>";
-                    $this->ganancias($ganancia);
-                } else {
-                    echo "Perdiste<br>";
-                    $this->ganancias($ganancia);
-                }
-            } else if ($posicion_ganadora == "Visitante") {
-                $ganancia = ($apuesta == $posicion_ganadora) ? 2000 : -1000;
-                if ($ganancia == 2000) {
-                    echo "Ganaste<br>";
-                    $this->ganancias($ganancia);
-                } else {
-                    echo "Perdiste<br>";
-                    $this->ganancias($ganancia);
-                }
-            }
-        } else {
-            echo "¡Es un Empate!<br>";
-            $ganancia = ($apuesta == $empate) ? 2000 : -1000;
-            if ($ganancia == 2000) {
-                echo "Ganaste<br>";
-                $this->ganancias($ganancia);
-            } else {
-                echo "Perdiste<br>";
-                $this->ganancias($ganancia);
-            }
-        }
-    }
-
-
     public function conectarUsuario()
     {
         $usuario = $_SESSION['username'];
-        // Primero, verificar si el usuario ya existe en la tabla local_visitante
-        $sql = "SELECT id FROM local_visitante WHERE usuario = ?";
+        // Primero, verificar si el usuario ya existe en la tabla manchita
+        $sql = "SELECT id FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("s", $usuario);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             // El usuario ya existe, así que actualiza la fila con los nuevos caramelos
-            $sql = "SELECT caramelos FROM local_visitante WHERE usuario = ?";
+            $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("s", $usuario);
             $stmt->execute();
@@ -149,7 +33,7 @@ class LocalVisitante extends Juegos
                 $caramelos = $row['caramelos'];
                 if ($stmt->execute()) {
                     // Redirigir al usuario después de la actualización
-                    header("Location: ../Vista/local_visitante.php?jugar2=1");
+                    header("Location: ../Vista/manchita.php?jugar=1");
                     exit();
                 } else {
                     echo "Error al actualizar los caramelos: " . $stmt->error;
@@ -158,13 +42,13 @@ class LocalVisitante extends Juegos
         } else {
             // El usuario no existe, así que inserta un nuevo registro
             $caramelos = 1000;
-            $sql = "INSERT INTO local_visitante (usuario, caramelos) VALUES (?, ?)";
+            $sql = "INSERT INTO manchita (usuario, caramelos) VALUES (?, ?)";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("si", $usuario, $caramelos);
 
             if ($stmt->execute()) {
                 // Redirigir al usuario después de la inserción
-                header("Location: ../Vista/local_visitante.php?jugar2=1");
+                header("Location: ../Vista/manchita.php?jugar=1");
                 exit();
             } else {
                 echo "Error al insertar el registro: " . $stmt->error;
@@ -172,7 +56,136 @@ class LocalVisitante extends Juegos
         }
         $stmt->close();
     }
+    public function procesarApuesta($apuesta)
+    {
+        if ($apuesta == "1-10") {
+            $apuesta = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        } elseif ($apuesta == "11-20") {
+            $apuesta = array(11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+        } elseif ($apuesta == "21-30") {
+            $apuesta = array(21, 22, 23, 24, 25, 26, 27, 28, 29, 30);
+        } elseif ($apuesta == "31-40") {
+            $apuesta = array(31, 32, 33, 34, 35, 36, 37, 38, 39, 40);
+        } elseif ($apuesta == "41-50") {
+            $apuesta = array(41, 42, 43, 44, 45, 46, 47, 48, 49, 50);
+        }
+        $cartas = array(
+            "1 de Oros",
+            "2 de Oros",
+            "3 de Oros",
+            "4 de Oros",
+            "5 de Oros",
+            "6 de Oros",
+            "7 de Oros",
+            "8 de Oros",
+            "9 de Oros",
+            "10 de Oros",
+            "11 de Oros",
+            "12 de Oros",
+            "1 de Copas",
+            "2 de Copas",
+            "3 de Copas",
+            "4 de Copas",
+            "5 de Copas",
+            "6 de Copas",
+            "7 de Copas",
+            "8 de Copas",
+            "9 de Copas",
+            "10 de Copas",
+            "11 de Copas",
+            "12 de Copas",
+            "1 de Espadas",
+            "2 de Espadas",
+            "3 de Espadas",
+            "4 de Espadas",
+            "5 de Espadas",
+            "6 de Espadas",
+            "7 de Espadas",
+            "8 de Espadas",
+            "9 de Espadas",
+            "10 de Espadas",
+            "11 de Espadas",
+            "12 de Espadas",
+            "1 de Bastos",
+            "2 de Bastos",
+            "3 de Bastos",
+            "4 de Bastos",
+            "5 de Bastos",
+            "6 de Bastos",
+            "7 de Bastos",
+            "8 de Bastos",
+            "9 de Bastos",
+            "10 de Bastos",
+            "11 de Bastos",
+            "12 de Bastos",
+            "Comodin 1",
+            "Comodin 2"
+        );
+        echo '<style>
+                .cartas {
+                    display: grid;
+                    grid-template-columns: repeat(10, 1fr);
+                    gap: 10px;
+                    width: 100%;
+                    margin-top: 20px;
+                }
 
+                .carta {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid white;
+                    width: 75px;
+                    height: 150px;
+                    background-color: #fff;
+                    padding: 5px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+
+                .carta img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+
+/* Asegúrate de que no haya estilos que afecten la posición de la imagen fuera del contenedor */
+                img {
+                    position: relative;
+                }
+        </style>';
+
+        echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
+
+        for ($i = 0; $i < 50; $i++) {
+            if (count($cartas) == 0) {
+                break;
+            }
+            $numero = rand(0, count($cartas) - 1);
+            $sale = $cartas[$numero];
+            array_splice($cartas, $numero, 1);
+            $posicion = $i + 1;
+
+            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
+            echo '<div class="carta">'; // Iniciar el div de la carta
+            echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
+            echo '<p>Posición ' . $posicion . ': ' . $sale . '</p>'; // Mostrar la posición y nombre de la carta
+
+            if ($sale == "1 de Oros") {
+                echo '<p>La manchita salió en la posición ' . $posicion . '</p>';
+                $ganancia = in_array($i + 1, $apuesta) ? 2000 : -1000;
+                $this->ganancias($ganancia);
+                echo '</div>'; // Cerrar el div de la carta antes de salir
+                echo '</div>'; // Cerrar el contenedor de la grilla
+                return; // Salir de la función después de encontrar la carta
+            }
+
+            echo '</div>'; // Cerrar el div de la carta
+        }
+
+        echo '</div>'; // Cerrar el contenedor de la grilla
+    }
     public function ganancias($ganancia)
     {
         $usuario = $_SESSION['username'];
@@ -182,7 +195,7 @@ class LocalVisitante extends Juegos
         echo "Ganancia: " . $ganancia . "<br>";
         echo "Caramelos a sumar/restar: " . $caramelos . "<br>";
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
-        $sql = "SELECT caramelos FROM local_visitante WHERE usuario = ?";
+        $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("s", $usuario);
         $stmt->execute();
@@ -195,7 +208,7 @@ class LocalVisitante extends Juegos
             // Imprimir valores para depuración
             echo "Caramelos actuales: " . $caramelosActuales . "<br>";
             echo "Caramelos nuevos: " . $newCaramelos . "<br>";
-            $sql = "UPDATE local_visitante SET caramelos = ? WHERE usuario = ?";
+            $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
@@ -205,7 +218,7 @@ class LocalVisitante extends Juegos
             }
         } else {
             // El usuario no tiene un registro, insertar uno nuevo
-            $sql = "INSERT INTO local_visitante (usuario, caramelos) VALUES (?, ?)";
+            $sql = "INSERT INTO manchita (usuario, caramelos) VALUES (?, ?)";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("si", $usuario, $caramelos);
 
@@ -218,13 +231,12 @@ class LocalVisitante extends Juegos
         $stmt->close();
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Local/Visitante</title>
+    <title>Manchita</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Vista/stylesManchita.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,7 +244,7 @@ class LocalVisitante extends Juegos
 </head>
 
 <body>
-    <form action=../Vista/local_visitante.php>
+    <form action=../Vista/manchita.php>
         <div class="botonJugar">
             <button>Volver a Jugar</button>
         </div>

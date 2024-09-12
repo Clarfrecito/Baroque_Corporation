@@ -20,6 +20,7 @@ class RegistrarControlador
                     $username = $this->limpiar_cadena($_POST['username']);
                     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
                     $email = $this->limpiar_cadena($_POST['email']);
+
                     $stmt = $this->conexion->prepare("INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)");
                     $stmt->bind_param("sss", $username, $email, $password);
                     if ($stmt->execute()) {
@@ -29,20 +30,20 @@ class RegistrarControlador
                     } else {
                         echo '<script>
                                 alert("Ha ocurrido un error al registrar.");
-                                window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                                window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                              </script>';
                     }
                     $stmt->close();
                 } else {
                     echo '<script>
                             alert("Los datos ingresados no son correctos");
-                            window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                            window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                          </script>';
                 }
             } else {
                 echo '<script>
                         alert("Por favor complete todos los datos.");
-                        window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                        window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
                      </script>';
             }
         } else {
@@ -67,31 +68,35 @@ class RegistrarControlador
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $this->limpiar_cadena($_POST["username"]);
             $password = $_POST["password"];
+
+            // Preparar la consulta SQL para obtener el usuario por nombre de usuario
             $stmt = $this->conexion->prepare("SELECT * FROM usuarios WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $result = $stmt->get_result();
-            if ($result->num_rows == 1) {
-                $row = $result->fetch_assoc();
+            if ($result && $result->num_rows == 1) {
+                $row = $result->fetch_assoc(); // Obtener los datos del usuario
                 if (password_verify($password, $row["password"])) {
                     $_SESSION['username'] = $username;
+                    $_SESSION['id_usuario'] = $row['id']; // Obtener el 'id' del usuario de la base de datos
                     header("Location: ../Vista/menu_principal.php");
                     exit();
                 } else {
                     echo '<script>
-                            alert("Contraseña incorrecta.");
-                            window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
-                         </script>';
+                        alert("Contraseña incorrecta.");
+                        window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+                     </script>';
                 }
             } else {
                 echo '<script>
-                        alert("Usuario no encotrado.");
-                        window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
-                     </script>';
+                    alert("Usuario no encontrado.");
+                    window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+                 </script>';
             }
             $stmt->close();
         }
     }
+
     function verificar_datos($filtro, $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {

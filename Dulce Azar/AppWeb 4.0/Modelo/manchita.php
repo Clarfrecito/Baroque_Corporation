@@ -11,9 +11,8 @@ class Manchita extends Juegos
         parent::__construct($conexion);
         $this->conexion = $conexion;
     }
-    public function encontrarManchita()
+    public function conectarUsuario()
     {
-        $caramelos = 1000;
         $usuario = $_SESSION['username'];
         // Primero, verificar si el usuario ya existe en la tabla manchita
         $sql = "SELECT id FROM manchita WHERE usuario = ?";
@@ -23,18 +22,26 @@ class Manchita extends Juegos
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             // El usuario ya existe, así que actualiza la fila con los nuevos caramelos
-            $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
+            $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("is", $caramelos, $usuario);
-            if ($stmt->execute()) {
-                // Redirigir al usuario después de la actualización
-                header("Location: ../Vista/manchita.php?jugar=1");
-                exit();
-            } else {
-                echo "Error al actualizar los caramelos: " . $stmt->error;
+            $stmt->bind_param("s", $usuario);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                // El usuario ya tiene un registro, actualizar la cantidad de caramelos
+                $row = $result->fetch_assoc();
+                $caramelos = $row['caramelos'];
+                if ($stmt->execute()) {
+                    // Redirigir al usuario después de la actualización
+                    header("Location: ../Vista/manchita.php?jugar=1");
+                    exit();
+                } else {
+                    echo "Error al actualizar los caramelos: " . $stmt->error;
+                }
             }
         } else {
             // El usuario no existe, así que inserta un nuevo registro
+            $caramelos = 1000;
             $sql = "INSERT INTO manchita (usuario, caramelos) VALUES (?, ?)";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("si", $usuario, $caramelos);
@@ -115,6 +122,27 @@ class Manchita extends Juegos
             "Comodin 2"
         );
 
+        echo '<style>
+        .cartas {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); /* 10 columnas */
+            grid-template-rows: repeat(5, 1fr);    /* 5 filas */
+            border: 2px solid white;
+            width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
+            margin-top: 20px; /* Espacio entre el contenedor y el resto de la página */
+        }
+        
+        .carta {
+            margin-top: 10px; /* Espacio entre cada carta */
+            border: 1px solid white; /* Borde alrededor de cada carta */
+            width: 75px; /* Que ocupe todo el espacio en la celda */
+            height: 100px; /* Que ocupe todo el alto de la celda */
+        }
+        
+        </style>';
+
+        echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
+
         for ($i = 0; $i < 50; $i++) {
             if (count($cartas) == 0) {
                 break;
@@ -124,6 +152,13 @@ class Manchita extends Juegos
             array_splice($cartas, $numero, 1);
             $posicion = $i + 1;
             echo "Posición $posicion: $sale<br>";
+
+            // Generar el HTML para la carta
+            // Asegúrate de que los nombres de imagen coinciden
+            echo '<div class="carta">'; // Aquí cada carta tiene su propio div
+            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.jpg';
+            echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">';
+            echo '</div>';
             if ($sale == "1 de Oros") {
                 echo "La manchita salió en la posición " . $posicion . "<br>";
                 $ganancia = in_array($posicion, $apuesta) ? 2000 : -1000;
@@ -138,10 +173,11 @@ class Manchita extends Juegos
                 return;
             }
         }
+        echo '</div>';
     }
     public function ganancias($ganancia)
     {
-        $username = $_SESSION["username"];
+        $usuario = $_SESSION['username'];
         // Determinar la cantidad de caramelos a sumar o restar
         $caramelos = $ganancia;
         // Imprimir valores para depuración
@@ -150,20 +186,20 @@ class Manchita extends Juegos
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("s", $usuario);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             // El usuario ya tiene un registro, actualizar la cantidad de caramelos
             $row = $result->fetch_assoc();
-            $currentCaramelos = $row['caramelos'];
-            $newCaramelos = $currentCaramelos + $caramelos;
+            $caramelosActuales = $row['caramelos'];
+            $newCaramelos = $caramelosActuales + $caramelos;
             // Imprimir valores para depuración
-            echo "Caramelos actuales: " . $currentCaramelos . "<br>";
+            echo "Caramelos actuales: " . $caramelosActuales . "<br>";
             echo "Caramelos nuevos: " . $newCaramelos . "<br>";
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("is", $newCaramelos, $username);
+            $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
                 echo "Caramelos actualizados correctamente: " . $newCaramelos . "<br>";
             } else {
@@ -173,7 +209,7 @@ class Manchita extends Juegos
             // El usuario no tiene un registro, insertar uno nuevo
             $sql = "INSERT INTO manchita (usuario, caramelos) VALUES (?, ?)";
             $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("si", $username, $caramelos);
+            $stmt->bind_param("si", $usuario, $caramelos);
 
             if ($stmt->execute()) {
                 echo "Registro de caramelos creado correctamente.";
@@ -189,7 +225,7 @@ class Manchita extends Juegos
 <html lang="en">
 
 <head>
-<title>Manchita</title>
+    <title>Manchita</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../Vista/stylesManchita.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,16 +238,13 @@ class Manchita extends Juegos
             <button>Volver a Jugar</button>
         </div>
     </form>
-    <form method="POST" action="../Controlador/juegos.php">
-            <input type="submit" name="FinalizarJuego" value="Finalizar Juego">
-    </form>
     <audio id="background-music" autoplay loop>
         <source src="../../musica.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
     <!-- Script original -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('background-music');
             // Recuperar la última posición guardada desde localStorage
             var savedTime = localStorage.getItem('audioTime');
@@ -219,32 +252,32 @@ class Manchita extends Juegos
                 audio.currentTime = parseFloat(savedTime);
             }
             // Intentar reproducir el audio automáticamente
-            audio.play().catch(function(error) {
+            audio.play().catch(function (error) {
                 console.error('El audio no se pudo reproducir automáticamente:', error);
             });
             // Guardar la posición actual del audio en localStorage cada vez que cambie
-            audio.addEventListener('timeupdate', function() {
+            audio.addEventListener('timeupdate', function () {
                 localStorage.setItem('audioTime', audio.currentTime);
             });
             // Escuchar cambios en localStorage para sincronizar entre ventanas/pestañas
-            window.addEventListener('storage', function(event) {
+            window.addEventListener('storage', function (event) {
                 if (event.key === 'audioTime') {
                     audio.currentTime = parseFloat(event.newValue);
                 }
             });
             // Guardar la posición cuando el usuario deja la página
-            window.addEventListener('beforeunload', function() {
+            window.addEventListener('beforeunload', function () {
                 localStorage.setItem('audioTime', audio.currentTime);
             });
         });
     </script>
     <!-- Script adicional para manejar la interacción del usuario -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('background-music');
             // Intentar reproducir el audio automáticamente con manejo de interacción
             function tryToPlayAudio() {
-                audio.play().catch(function(error) {
+                audio.play().catch(function (error) {
                     console.log('El audio no se pudo reproducir automáticamente, esperando interacción del usuario.');
                     document.body.addEventListener('click', tryToPlayAudio);
                 });
