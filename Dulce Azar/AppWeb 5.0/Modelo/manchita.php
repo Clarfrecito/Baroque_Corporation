@@ -149,7 +149,7 @@ for ($i = 0; $i < 50; $i++) {
     // Generar el HTML para la carta
      // Asegúrate de que los nombres de imagen coinciden
     echo '<div class="carta">'; // Aquí cada carta tiene su propio div
-    $imagen = strtolower(str_replace(' ', '_', $sale)) . '.jpg';
+    $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png';
     echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">';
     echo '</div>';
 

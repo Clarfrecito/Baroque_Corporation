@@ -14,9 +14,9 @@ require_once '../Utiles/verificar_sesion.php';
     <img src="../../DulceAzar.png" alt="Logo" id="Logo">  
     <h1>Dulce Azar</h1>
     <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Acerca de</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="acerca.php">Acerca de</a></li>
+        <li><a href="perfil.php">Perfil</a></li>
+
         <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
     </ul>
     <div class="grid-container">
@@ -46,8 +46,10 @@ require_once '../Utiles/verificar_sesion.php';
         <source src="../../musica.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-    <!-- Script original -->
-    <script>
+
+</div>
+ <!-- Script original -->
+ <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
             // Recuperar la última posición guardada desde localStorage
