@@ -1,6 +1,5 @@
 <?php
 require_once '../Utiles/verificar_sesion.php';
-verificar_sesion();
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,17 +9,14 @@ verificar_sesion();
     <link rel="stylesheet" href="stylesM.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    <?php
-        echo $_SESSION['username'];
-    ?>
 </head>
 <body>
     <img src="../../DulceAzar.png" alt="Logo" id="Logo">  
     <h1>Dulce Azar</h1>
     <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Acerca de</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="acerca.php">Acerca de</a></li>
+        <li><a href="perfil.php">Perfil</a></li>
+
         <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
     </ul>
     <div class="grid-container">
@@ -50,8 +46,10 @@ verificar_sesion();
         <source src="../../musica.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
-    <!-- Script original -->
-    <script>
+
+</div>
+ <!-- Script original -->
+ <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById('background-music');
             // Recuperar la última posición guardada desde localStorage

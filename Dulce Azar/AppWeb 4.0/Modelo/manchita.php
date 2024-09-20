@@ -121,24 +121,39 @@ class Manchita extends Juegos
             "Comodin 1",
             "Comodin 2"
         );
-
         echo '<style>
-        .cartas {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr); /* 10 columnas */
-            grid-template-rows: repeat(5, 1fr);    /* 5 filas */
-            border: 2px solid white;
-            width: 100%; /* Asegurarse de que el contenedor ocupe todo el ancho */
-            margin-top: 20px; /* Espacio entre el contenedor y el resto de la página */
-        }
-        
-        .carta {
-            margin-top: 10px; /* Espacio entre cada carta */
-            border: 1px solid white; /* Borde alrededor de cada carta */
-            width: 75px; /* Que ocupe todo el espacio en la celda */
-            height: 100px; /* Que ocupe todo el alto de la celda */
-        }
-        
+                .cartas {
+                    display: grid;
+                    grid-template-columns: repeat(10, 1fr);
+                    gap: 10px;
+                    width: 100%;
+                    margin-top: 20px;
+                }
+
+                .carta {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid white;
+                    width: 75px;
+                    height: 150px;
+                    background-color: #fff;
+                    padding: 5px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+                }
+
+                .carta img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+
+/* Asegúrate de que no haya estilos que afecten la posición de la imagen fuera del contenedor */
+                img {
+                    position: relative;
+                }
         </style>';
 
         echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
@@ -151,29 +166,25 @@ class Manchita extends Juegos
             $sale = $cartas[$numero];
             array_splice($cartas, $numero, 1);
             $posicion = $i + 1;
-            echo "Posición $posicion: $sale<br>";
 
-            // Generar el HTML para la carta
-            // Asegúrate de que los nombres de imagen coinciden
-            echo '<div class="carta">'; // Aquí cada carta tiene su propio div
-            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.jpg';
-            echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">';
-            echo '</div>';
+            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
+            echo '<div class="carta">'; // Iniciar el div de la carta
+            echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
+            echo '<p>Posición ' . $posicion . ': ' . $sale . '</p>'; // Mostrar la posición y nombre de la carta
+
             if ($sale == "1 de Oros") {
-                echo "La manchita salió en la posición " . $posicion . "<br>";
-                $ganancia = in_array($posicion, $apuesta) ? 2000 : -1000;
-                if ($ganancia == 2000) {
-                    echo "Ganaste<br>";
-                    $this->ganancias($ganancia);
-                } elseif ($ganancia == -1000) {
-                    echo "Perdiste<br>";
-                    $this->ganancias($ganancia);
-                }
-                echo $ganancia;
-                return;
+                echo '<p>La manchita salió en la posición ' . $posicion . '</p>';
+                $ganancia = in_array($i + 1, $apuesta) ? 2000 : -1000;
+                $this->ganancias($ganancia);
+                echo '</div>'; // Cerrar el div de la carta antes de salir
+                echo '</div>'; // Cerrar el contenedor de la grilla
+                return; // Salir de la función después de encontrar la carta
             }
+
+            echo '</div>'; // Cerrar el div de la carta
         }
-        echo '</div>';
+
+        echo '</div>'; // Cerrar el contenedor de la grilla
     }
     public function ganancias($ganancia)
     {
