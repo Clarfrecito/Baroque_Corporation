@@ -180,7 +180,6 @@ class Manchita extends Juegos
         $caramelos = $ganancia;
         // Imprimir valores para depuración
         echo "Ganancia: " . $ganancia . "<br>";
-        echo "Caramelos a sumar/restar: " . $caramelos . "<br>";
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
@@ -193,7 +192,6 @@ class Manchita extends Juegos
             $caramelosActuales = $row['caramelos'];
             $newCaramelos = $caramelosActuales + $caramelos;
             // Imprimir valores para depuración
-            echo "Caramelos actuales: " . $caramelosActuales . "<br>";
             echo "Caramelos nuevos: " . $newCaramelos . "<br>";
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);

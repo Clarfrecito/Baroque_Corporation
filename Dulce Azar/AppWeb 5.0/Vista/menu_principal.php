@@ -1,5 +1,6 @@
 <?php
 require_once '../Utiles/verificar_sesion.php';
+verificar_sesion();
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@ require_once '../Utiles/verificar_sesion.php';
     <ul>
         <li><a href="acerca.php">Acerca de</a></li>
         <li><a href="perfil.php">Perfil</a></li>
-
+        <li><a href="instrucciones.php">¿Como jugar?</a></li>
         <li><form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form></li>
     </ul>
     <div class="grid-container">
@@ -30,7 +31,7 @@ require_once '../Utiles/verificar_sesion.php';
                 <h1><strong>LOCAL VISITANTE</strong></h1>
         </div>  
         </a>   
-        <a href="manchita.php" class="grid-item3">      
+        <a href="#" class="grid-item3">      
         <div class="background-image3">
                 <h1><strong>BINGO LOCO</strong></h1>
         </div>

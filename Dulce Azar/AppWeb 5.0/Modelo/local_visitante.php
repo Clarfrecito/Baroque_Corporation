@@ -1,4 +1,5 @@
 <?php
+//Terminar L/V
 require_once 'conex_bd.php';
 require_once 'juegos.php';
 require_once '../Utiles/verificar_sesion.php';
@@ -74,10 +75,34 @@ class LocalVisitante extends Juegos
             $cartas_sacadas[] = array("carta" => $sale, "valor" => $valor);
             echo " {$posiciones[$i]}: $sale<br>";
         }
+        echo '<style>
+    .cartas {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap:5px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .carta {
+        width: 100px;
+        height: 200px;
+        padding: 5px;
+    }
+    .carta img {
+        width: 100px;
+        height: 150px;
+        object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
+    }
+    img {
+        position: relative;
+    }
+</style>';
+
+        echo '<div class="cartas">';
 
         // Verificar si las dos cartas tienen el mismo valor
         if ($cartas_sacadas[0]['valor'] === $cartas_sacadas[1]['valor']) {
-            $carta_ganadora=null;
+            $carta_ganadora = null;
             $empate = "Empate";
         } else {
             // Determinar la carta ganadora
@@ -86,12 +111,18 @@ class LocalVisitante extends Juegos
             $posicion_ganadora = null;
             foreach ($cartas_sacadas as $index => $carta) {
                 if ($carta['valor'] > $valor_maximo) {
+                    $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
+                    echo '<div class="carta">'; // Iniciar el div de la carta
+                    echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
                     $valor_maximo = $carta['valor'];
                     $carta_ganadora = $carta['carta'];
+                    echo '</div>'; // Cerrar el div de la carta antes de salir
+                    echo '</div>'; // Cerrar el contenedor de la grilla
                     $posicion_ganadora = $posiciones[$index];
                 }
             }
         }
+        echo '</div>';
         if ($carta_ganadora !== null) {
             echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
             if ($posicion_ganadora == "Local") {
@@ -124,6 +155,7 @@ class LocalVisitante extends Juegos
                 $this->ganancias($ganancia);
             }
         }
+        echo '</div>';
     }
 
 

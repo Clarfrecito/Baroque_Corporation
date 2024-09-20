@@ -1,7 +1,8 @@
 <?php
-session_start();
 require_once '../Modelo/conex_bd.php';
 require_once '../Modelo/usuario_perfil.php';
+require_once '../Utiles/verificar_sesion.php';
+verificar_sesion();
 
 // Conexión a la base de datos
 $conexion = Conexion::conectar();
@@ -58,6 +59,17 @@ if (isset($_POST['enviar_codigo'])) {
     <link rel="stylesheet" href="stylesP.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<header>
+    <?php
+        if(isset($_SESSION['username'])){
+            $usuario=$_SESSION['username'];
+            echo "<h1>$usuario</h1>";
+        }else{
+            echo "No hay usuario logueado";
+        }
+    ?>
+
+</header>
 <body>
     <div class="div-contenedor">
     <form id="form-cambiar-contrasena" action="perfil.php" method="post">
