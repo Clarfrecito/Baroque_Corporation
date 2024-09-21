@@ -9,16 +9,16 @@
 </head>
 <body>
     <header>
-         <img src="../DulceAzar.png" alt="Logo">
+        <img src="../DulceAzar.png" alt="Logo" id="logo">
     </header>
     <main>
         <div class="div-contenedor">
             <h1>Menú<h1>
             <form action="Vista/registrarse.php" method="get">
-                <button type="submit">Registrarse</button>
+                <button type="submit" id="registrarse">Registrarse</button>
             </form>
             <form action="Vista/login.php" method="get">
-                <button type="submit" value="Iniciar sesión">Iniciar Sesion</button>
+                <button type="submit" value="Iniciar sesión" id="iniciar-sesion">Iniciar Sesion</button>
             </form>
         </div>
     </main>
@@ -73,5 +73,6 @@
             tryToPlayAudio();
         });
     </script>
+    
 </body>
 </html>
