@@ -122,27 +122,34 @@ class Manchita extends Juegos
             "Comodin 2"
         );
         echo '<style>
-    .cartas {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap:5px;
-        width: 100%;
-        margin-top: 20px;
-    }
-    .carta {
-        width: 100px;
-        height: 200px;
-        padding: 5px;
-    }
-    .carta img {
-        width: 100px;
-        height: 150px;
-        object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
-    }
-    img {
-        position: relative;
-    }
-</style>';
+        h3{
+            margin-top:5px;
+        }
+        .cartas {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap:5px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .carta {
+            width: 100px;
+            height: 200px;
+            padding: 5px;
+        }
+        .carta img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
+        }
+        img {
+            position: relative;
+        }
+        #cara{
+            width:50px;
+            height:50px;
+        }
+            </style>';
 
         echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
 
@@ -160,26 +167,22 @@ class Manchita extends Juegos
             echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
 
             if ($sale == "1 de Oros") {
-                echo '<p>La manchita salió en la posición ' . $posicion . '</p>';
+                $manchita= "<br>La manchita salió en la posición $posicion<br>";
                 $ganancia = in_array($i + 1, $apuesta) ? 2000 : -1000;
                 $this->ganancias($ganancia);
                 echo '</div>'; // Cerrar el div de la carta antes de salir
                 echo '</div>'; // Cerrar el contenedor de la grilla
-                return; // Salir de la función después de encontrar la carta
+                return $manchita; // Salir de la función después de encontrar la carta
             }
-
             echo '</div>'; // Cerrar el div de la carta
         }
-
         echo '</div>'; // Cerrar el contenedor de la grilla
     }
     public function ganancias($ganancia)
     {
         $usuario = $_SESSION['username'];
-        // Determinar la cantidad de caramelos a sumar o restar
         $caramelos = $ganancia;
-        // Imprimir valores para depuración
-        echo "Ganancia: " . $ganancia . "<br>";
+        echo "<br><h4>Ganancia: $ganancia</h4><br>";
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
@@ -191,13 +194,12 @@ class Manchita extends Juegos
             $row = $result->fetch_assoc();
             $caramelosActuales = $row['caramelos'];
             $newCaramelos = $caramelosActuales + $caramelos;
-            // Imprimir valores para depuración
-            echo "Caramelos nuevos: " . $newCaramelos . "<br>";
+            //hacer que se vea arriba a la derecha
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-                echo "Caramelos actualizados correctamente: " . $newCaramelos . "<br>";
+                echo '<h3><img src="../images/caramelo.png" alt="Caramelo" id="carame"> ' . $newCaramelos . '</h3>';
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;
             }
@@ -207,9 +209,7 @@ class Manchita extends Juegos
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("si", $usuario, $caramelos);
 
-            if ($stmt->execute()) {
-                echo "Registro de caramelos creado correctamente.";
-            } else {
+            if (!$stmt->execute()) {   
                 echo "Error al crear el registro: " . $stmt->error;
             }
         }

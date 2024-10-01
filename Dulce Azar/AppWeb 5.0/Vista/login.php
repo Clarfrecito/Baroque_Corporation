@@ -17,7 +17,7 @@
         <form action="../Controlador/registrar.php" method="post">
         <div class="div-contenedor">
             <h1>Inicio de Sesion</h1>
-            <input type="text" id="username" name="username" required placeholder="Usuario"><br><br>
+            <input type="text" id="usernameOrEmail" name="usernameOrEmail" required placeholder="Usuario/Email"><br><br>
             <input type="password" id="password" name="password" required placeholder="Contraseña"><br><br>
             <button type="submit" name="login">Iniciar Sesion</button>
         </form>

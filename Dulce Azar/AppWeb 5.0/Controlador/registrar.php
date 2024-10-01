@@ -63,35 +63,35 @@ class RegistrarControlador
             exit();
         }
     }
+
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $username = $this->limpiar_cadena($_POST["username"]);
+            $usernameOrEmail = $this->limpiar_cadena($_POST["usernameOrEmail"]);
             $password = $_POST["password"];
-
-            // Preparar la consulta SQL para obtener el usuario por nombre de usuario
-            $stmt = $this->conexion->prepare("SELECT * FROM usuarios WHERE username = ?");
-            $stmt->bind_param("s", $username);
+            
+            $stmt = $this->conexion->prepare("SELECT * FROM usuarios WHERE username = ? OR email = ?");
+            $stmt->bind_param("ss", $usernameOrEmail, $usernameOrEmail);
             $stmt->execute();
             $result = $stmt->get_result();
             if ($result && $result->num_rows == 1) {
-                $row = $result->fetch_assoc(); // Obtener los datos del usuario
+                $row = $result->fetch_assoc(); 
                 if (password_verify($password, $row["password"])) {
-                    $_SESSION['username'] = $username;
-                    $_SESSION['id_usuario'] = $row['id']; // Obtener el 'id' del usuario de la base de datos
+                    $_SESSION['username'] = $row['username']; 
+                    $_SESSION['id_usuario'] = $row['id']; 
                     header("Location: ../Vista/menu_principal.php");
                     exit();
                 } else {
                     echo '<script>
-                        alert("Contraseña incorrecta.");
-                        window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
-                     </script>';
+                    alert("Contraseña incorrecta.");
+                    window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+                 </script>';
                 }
             } else {
                 echo '<script>
-                    alert("Usuario no encontrado.");
-                    window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
-                 </script>';
+                alert("Usuario no encontrado.");
+                window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+             </script>';
             }
             $stmt->close();
         }

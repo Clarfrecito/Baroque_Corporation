@@ -8,6 +8,26 @@ class ManchitaControlador extends Manchita {
         parent::__construct($conexion);
     }
 }
+echo "<style>
+    h2{
+        text-align:center;
+        color:white;
+    }
+    h3{
+        text-align:right;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    h4{
+    margin-top:10px;
+        color: green;
+        text-align: right;
+        position: absolute;
+        top: 20px;
+        right: 0;
+    }
+    </style>";
 $conexion = new Conexion(); 
 $controlador = new ManchitaControlador($conexion->conectar());
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -16,10 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif (isset($_POST['apostar'])) {
         $apuesta = isset($_POST['rango']) ? $_POST['rango'] : null;
         if ($apuesta !== null) {
-            echo "Apostaste por el rango: " . htmlspecialchars($apuesta) . "<br>"; 
-            $controlador->procesarApuesta($apuesta);
+            echo "<h2>Apostaste por el rango: " . htmlspecialchars($apuesta) . "</h2><br>"; 
+            $mensaje=$controlador->procesarApuesta($apuesta);
+            echo "<h2>$mensaje</h2>";
         } else {
-            echo "No se ha definido una apuesta.<br>";
+            echo "<h3>No se ha definido una apuesta.</h3><br>";
         }
     }
 }
