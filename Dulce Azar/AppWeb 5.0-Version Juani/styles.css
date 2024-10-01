@@ -59,6 +59,7 @@ button:hover{
   background-color: #1E1E1E;
   border: 3px solid rgb(255, 255, 255);
   border-radius: 5%;
+  margin-top: 50px;  /* Añade margen superior para evitar la superposición */
 }
 h1{
   font-size: 2rem;
@@ -70,7 +71,7 @@ h3{
   color: rgb(150, 150, 150);
   font-weight: normal;
 }
-img{
-  height: 125px;
-  width: auto;
+img {
+  margin-top: 10px;
+  height: 20%;
 }

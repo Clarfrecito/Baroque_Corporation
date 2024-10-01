@@ -78,10 +78,11 @@ class LocalVisitante extends Juegos
         echo '<style>
     .cartas {
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
         gap:5px;
         width: 100%;
         margin-top: 20px;
+        alignt-items: center;
+
     }
     .carta {
         width: 100px;
@@ -111,18 +112,52 @@ class LocalVisitante extends Juegos
             $posicion_ganadora = null;
             foreach ($cartas_sacadas as $index => $carta) {
                 if ($carta['valor'] > $valor_maximo) {
-                    $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
-                    echo '<div class="carta">'; // Iniciar el div de la carta
-                    echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
                     $valor_maximo = $carta['valor'];
                     $carta_ganadora = $carta['carta'];
-                    echo '</div>'; // Cerrar el div de la carta antes de salir
-                    echo '</div>'; // Cerrar el contenedor de la grilla
-                    $posicion_ganadora = $posiciones[$index];
+                // Mostrar ambas cartas
+                foreach ($cartas_sacadas as $index => $carta) {
+                    $imagen = strtolower(str_replace(' ', '_', $carta['carta'])) . '.png'; // Construir el nombre de archivo de la imagen
+                    echo '<div class="carta">'; // Iniciar el div de la carta
+                    echo '<img src="../images/' . $imagen . '" alt="' . $carta['carta'] . '">'; // Mostrar la imagen de la carta
+                    echo '</div>'; // Cerrar el div de la carta
+                }
+                // Verificar si las dos cartas tienen el mismo valor
+                if ($cartas_sacadas[0]['valor'] === $cartas_sacadas[1]['valor']) {
+                    $carta_ganadora = null;
+                    $empate = "Empate";
+                } else {
+                    // Determinar la carta ganadora
+                    $carta_ganadora = null;
+                    $valor_maximo = -1;
+                    $posicion_ganadora = null;
+                    foreach ($cartas_sacadas as $index => $carta) {
+                        if ($carta['valor'] > $valor_maximo) {
+                            $valor_maximo = $carta['valor'];
+                            $carta_ganadora = $carta['carta'];
+                            $posicion_ganadora = $posiciones[$index];
+                        }
+                    }
+                }
+                echo '</div>';
+                
+                if ($carta_ganadora !== null) {
+                    echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
+                    if ($posicion_ganadora == "Local") {
+                        $ganancia = ($apuesta == $posicion_ganadora) ? 2000 : -1000;
+                        if ($ganancia == 2000) {
+                            echo "Ganaste<br>";
+                            $this->ganancias($ganancia);
+                        } else {
+                            echo "Perdiste<br>";
+                            $this->ganancias($ganancia);
+                        }
+                    } else if ($posicion_ganadora == "Visitante") {
+                        // Resto del código...
+                    }
+                }   $posicion_ganadora = $posiciones[$index];
                 }
             }
         }
-        echo '</div>';
         if ($carta_ganadora !== null) {
             echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
             if ($posicion_ganadora == "Local") {
