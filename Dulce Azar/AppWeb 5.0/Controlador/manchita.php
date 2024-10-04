@@ -14,18 +14,25 @@ echo "<style>
         color:white;
     }
     h3{
-        text-align:right;
+        color:white;
+        font-weight: bold;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 22px;
+        left: 1292px;
     }
     h4{
-    margin-top:10px;
         color: green;
         text-align: right;
         position: absolute;
-        top: 20px;
-        right: 0;
+        top: 50px;
+        left: 1225px;
+    }
+    #carame{
+        width:50px;
+        height:50px;
+        position: absolute;
+        top: 0;
+        left: 1235px;
     }
     </style>";
 $conexion = new Conexion(); 

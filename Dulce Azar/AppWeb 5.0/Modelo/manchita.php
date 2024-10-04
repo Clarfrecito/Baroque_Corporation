@@ -145,14 +145,10 @@ class Manchita extends Juegos
         img {
             position: relative;
         }
-        #cara{
-            width:50px;
-            height:50px;
-        }
-            </style>';
-
+        </style>';
+    
         echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
-
+    
         for ($i = 0; $i < 50; $i++) {
             if (count($cartas) == 0) {
                 break;
@@ -161,13 +157,13 @@ class Manchita extends Juegos
             $sale = $cartas[$numero];
             array_splice($cartas, $numero, 1);
             $posicion = $i + 1;
-
+        
             $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
-            echo '<div class="carta">'; // Iniciar el div de la carta
+            echo '<div class="carta" id="carta-' . $i . '">'; // Iniciar el div de la carta con un ID único
             echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
-
+        
             if ($sale == "1 de Oros") {
-                $manchita= "<br>La manchita salió en la posición $posicion<br>";
+                $manchita = "<br>La manchita salió en la posición $posicion<br>";
                 $ganancia = in_array($i + 1, $apuesta) ? 2000 : -1000;
                 $this->ganancias($ganancia);
                 echo '</div>'; // Cerrar el div de la carta antes de salir
@@ -177,6 +173,8 @@ class Manchita extends Juegos
             echo '</div>'; // Cerrar el div de la carta
         }
         echo '</div>'; // Cerrar el contenedor de la grilla
+        
+        // Añadir el script para mostrar las cartas con un retraso
     }
     public function ganancias($ganancia)
     {
@@ -199,7 +197,8 @@ class Manchita extends Juegos
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-                echo '<h3><img src="../images/caramelo.png" alt="Caramelo" id="carame"> ' . $newCaramelos . '</h3>';
+                echo '<h3>' . $newCaramelos . '</h3>';
+                echo'<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;
             }
