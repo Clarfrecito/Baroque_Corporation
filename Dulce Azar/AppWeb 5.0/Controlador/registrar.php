@@ -2,8 +2,8 @@
 session_start();
 require_once '../Modelo/usuario.php';
 require_once '../Modelo/conex_bd.php';
-require_once '../Utiles/verificar_sesion.php';
-class RegistrarControlador
+
+class RegistrarControlador extends Usuario
 {
     private $conexion;
     public function __construct($conexion)
@@ -12,7 +12,7 @@ class RegistrarControlador
     }
     public function registrar()
     {
-        if (isset($_POST['registrarse'])) {
+        if (isset($_POST['registrarse'])) { 
             if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
                 $filtroUsername = "[A-Za-z0-9_]{5,20}";
                 $filtroEmail = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}";
@@ -20,9 +20,10 @@ class RegistrarControlador
                     $username = $this->limpiar_cadena($_POST['username']);
                     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
                     $email = $this->limpiar_cadena($_POST['email']);
+                    $caramelos=1000;
 
-                    $stmt = $this->conexion->prepare("INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)");
-                    $stmt->bind_param("sss", $username, $email, $password);
+                    $stmt = $this->conexion->prepare("INSERT INTO usuarios (username, email, password,caramelos) VALUES (?, ?, ?, ?)");
+                    $stmt->bind_param("sssi", $username, $email, $password, $caramelos);
                     if ($stmt->execute()) {
                         $_SESSION['username'] = $username;
                         header("Location: ../Vista/login.php");
@@ -30,20 +31,20 @@ class RegistrarControlador
                     } else {
                         echo '<script>
                                 alert("Ha ocurrido un error al registrar.");
-                                window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
+                                window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
                              </script>';
                     }
                     $stmt->close();
                 } else {
                     echo '<script>
                             alert("Los datos ingresados no son correctos");
-                            window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
+                            window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
                          </script>';
                 }
             } else {
                 echo '<script>
                         alert("Por favor complete todos los datos.");
-                        window.location.href = "http://localhost/AppWeb%204.0/Vista/registrarse.php";
+                        window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
                      </script>';
             }
         } else {
@@ -84,13 +85,13 @@ class RegistrarControlador
                 } else {
                     echo '<script>
                     alert("Contraseña incorrecta.");
-                    window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+                    window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
                  </script>';
                 }
             } else {
                 echo '<script>
                 alert("Usuario no encontrado.");
-                window.location.href = "http://localhost/AppWeb%204.0/Vista/login.php";
+                window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
              </script>';
             }
             $stmt->close();
@@ -133,7 +134,9 @@ class RegistrarControlador
         $cadena = str_ireplace("::", "", $cadena);
         return $cadena;
     }
+    
 }
+
 $conexion = new Conexion();
 if (isset($_POST['registrarse'])) {
     $controlador = new RegistrarControlador($conexion);

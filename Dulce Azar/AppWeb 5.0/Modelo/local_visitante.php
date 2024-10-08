@@ -223,8 +223,11 @@ class LocalVisitante extends Juegos
             // El usuario ya tiene un registro, actualizar la cantidad de caramelos
             $row = $result->fetch_assoc();
             $caramelosActuales = $row['caramelos'];
-            $newCaramelos = $caramelosActuales + $caramelos;
-            // Imprimir valores para depuración
+            if($caramelosActuales<=0){
+                $newCaramelos=0;
+            }else{
+                $newCaramelos = $caramelosActuales + $caramelos;
+            }
             echo "Caramelos actuales: " . $caramelosActuales . "<br>";
             echo "Caramelos nuevos: " . $newCaramelos . "<br>";
             $sql = "UPDATE local_visitante SET caramelos = ? WHERE usuario = ?";

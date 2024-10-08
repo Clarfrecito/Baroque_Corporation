@@ -7,11 +7,12 @@ class ManchitaControlador extends Manchita {
     public function __construct($conexion) {
         parent::__construct($conexion);
     }
+    
 }
 echo "<style>
     h2{
         text-align:center;
-        color:white;
+        color:gold;
     }
     h3{
         color:white;
@@ -21,7 +22,7 @@ echo "<style>
         left: 1292px;
     }
     h4{
-        color: green;
+        color: orange;
         text-align: right;
         position: absolute;
         top: 50px;
