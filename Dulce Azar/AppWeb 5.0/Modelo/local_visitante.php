@@ -14,6 +14,51 @@ class LocalVisitante extends Juegos
         parent::__construct($conexion);
         $this->conexion = $conexion;
     }
+    public function conectarUsuario()
+    {
+        $usuario = $_SESSION['username'];
+        // Primero, verificar si el usuario ya existe en la tabla local_visitante
+        $sql = "SELECT id FROM local_visitante WHERE usuario = ?";
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            // El usuario ya existe, así que actualiza la fila con los nuevos caramelos
+            $sql = "SELECT caramelos FROM local_visitante WHERE usuario = ?";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bind_param("s", $usuario);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                // El usuario ya tiene un registro, actualizar la cantidad de caramelos
+                $row = $result->fetch_assoc();
+                $caramelos = $row['caramelos'];
+                if ($stmt->execute()) {
+                    // Redirigir al usuario después de la actualización
+                    header("Location: ../Vista/local_visitante.php?jugar2=1");
+                    exit();
+                } else {
+                    echo "Error al actualizar los caramelos: " . $stmt->error;
+                }
+            }
+        } else {
+            // El usuario no existe, así que inserta un nuevo registro
+            $caramelos = 1000;
+            $sql = "INSERT INTO local_visitante (usuario, caramelos) VALUES (?, ?)";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bind_param("si", $usuario, $caramelos);
+
+            if ($stmt->execute()) {
+                // Redirigir al usuario después de la inserción
+                header("Location: ../Vista/local_visitante.php?jugar2=1");
+                exit();
+            } else {
+                echo "Error al insertar el registro: " . $stmt->error;
+            }
+        }
+        $stmt->close();
+    }
 
     public function procesarApuesta($apuesta)
     {
@@ -126,83 +171,18 @@ class LocalVisitante extends Juegos
         if ($carta_ganadora !== null) {
             echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
             if ($posicion_ganadora == "Local") {
-                $ganancia = ($apuesta == $posicion_ganadora) ? 2000 : -1000;
-                if ($ganancia == 2000) {
-                    echo "Ganaste<br>";
-                    $this->ganancias($ganancia);
-                } else {
-                    echo "Perdiste<br>";
-                    $this->ganancias($ganancia);
-                }
+                $ganancia = ($apuesta == $posicion_ganadora) ? 3000 : -1000;
+                $this->ganancias($ganancia);
             } else if ($posicion_ganadora == "Visitante") {
-                $ganancia = ($apuesta == $posicion_ganadora) ? 2000 : -1000;
-                if ($ganancia == 2000) {
-                    echo "Ganaste<br>";
-                    $this->ganancias($ganancia);
-                } else {
-                    echo "Perdiste<br>";
-                    $this->ganancias($ganancia);
-                }
+                $ganancia = ($apuesta == $posicion_ganadora) ? 3000 : -1000;
+                $this->ganancias($ganancia);
             }
         } else {
             echo "¡Es un Empate!<br>";
-            $ganancia = ($apuesta == $empate) ? 2000 : -1000;
-            if ($ganancia == 2000) {
-                echo "Ganaste<br>";
-                $this->ganancias($ganancia);
-            } else {
-                echo "Perdiste<br>";
-                $this->ganancias($ganancia);
-            }
+            $ganancia = ($apuesta == $empate) ? 3000 : -1000;
+            $this->ganancias($ganancia);
         }
         echo '</div>';
-    }
-
-
-    public function conectarUsuario()
-    {
-        $usuario = $_SESSION['username'];
-        // Primero, verificar si el usuario ya existe en la tabla local_visitante
-        $sql = "SELECT id FROM local_visitante WHERE usuario = ?";
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("s", $usuario);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            // El usuario ya existe, así que actualiza la fila con los nuevos caramelos
-            $sql = "SELECT caramelos FROM local_visitante WHERE usuario = ?";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("s", $usuario);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
-                // El usuario ya tiene un registro, actualizar la cantidad de caramelos
-                $row = $result->fetch_assoc();
-                $caramelos = $row['caramelos'];
-                if ($stmt->execute()) {
-                    // Redirigir al usuario después de la actualización
-                    header("Location: ../Vista/local_visitante.php?jugar2=1");
-                    exit();
-                } else {
-                    echo "Error al actualizar los caramelos: " . $stmt->error;
-                }
-            }
-        } else {
-            // El usuario no existe, así que inserta un nuevo registro
-            $caramelos = 1000;
-            $sql = "INSERT INTO local_visitante (usuario, caramelos) VALUES (?, ?)";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param("si", $usuario, $caramelos);
-
-            if ($stmt->execute()) {
-                // Redirigir al usuario después de la inserción
-                header("Location: ../Vista/local_visitante.php?jugar2=1");
-                exit();
-            } else {
-                echo "Error al insertar el registro: " . $stmt->error;
-            }
-        }
-        $stmt->close();
     }
 
     public function ganancias($ganancia)
@@ -210,9 +190,11 @@ class LocalVisitante extends Juegos
         $usuario = $_SESSION['username'];
         // Determinar la cantidad de caramelos a sumar o restar
         $caramelos = $ganancia;
-        // Imprimir valores para depuración
-        echo "Ganancia: " . $ganancia . "<br>";
-        echo "Caramelos a sumar/restar: " . $caramelos . "<br>";
+        if ($ganancia == 3000) {
+            echo "<br><h4>¡Ganaste! $ganancia</h4><br>";
+        } else {
+            echo "<br><h4>¡Perdiste! $ganancia</h4><br>";
+        }
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM local_visitante WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
@@ -223,18 +205,18 @@ class LocalVisitante extends Juegos
             // El usuario ya tiene un registro, actualizar la cantidad de caramelos
             $row = $result->fetch_assoc();
             $caramelosActuales = $row['caramelos'];
-            if($caramelosActuales<=0){
-                $newCaramelos=0;
-            }else{
+            //$_SESSION['caramelosL'] = $row['caramelos'];
+            if ($caramelosActuales <= 0) {
+                $newCaramelos = ($caramelos == -1000) ? 0 : 2000;
+            } else {
                 $newCaramelos = $caramelosActuales + $caramelos;
             }
-            echo "Caramelos actuales: " . $caramelosActuales . "<br>";
-            echo "Caramelos nuevos: " . $newCaramelos . "<br>";
             $sql = "UPDATE local_visitante SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-                echo "Caramelos actualizados correctamente: " . $newCaramelos . "<br>";
+                echo '<h3>' . $newCaramelos . '</h3>';
+                echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;
             }

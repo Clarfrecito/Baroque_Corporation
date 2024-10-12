@@ -10,6 +10,10 @@ verificar_sesion();
     <link rel="stylesheet" href="stylesM.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <?php 
+        //$_SESSION['caramelosTotales'] = $_SESSION['caramelosM'] + $_SESSION['caramelosL'];
+        //echo $caramelosTotales;
+    ?>
 </head>
 <body>
     <img src="../../DulceAzar.png" alt="Logo" id="Logo">  

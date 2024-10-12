@@ -164,7 +164,7 @@ class Manchita extends Juegos
 
             if ($sale == "1 de Oros") {
                 $manchita = "<br>La manchita salió en la posición $posicion<br>";
-                $ganancia = in_array($i + 1, $apuesta) ? 2000 : -1000;
+                $ganancia = in_array($i + 1, $apuesta) ? 3000 : -1000;
                 $this->ganancias($ganancia);
                 echo '</div>'; // Cerrar el div de la carta antes de salir
                 echo '</div>'; // Cerrar el contenedor de la grilla
@@ -180,7 +180,11 @@ class Manchita extends Juegos
     {
         $usuario = $_SESSION['username'];
         $caramelos = $ganancia;
-        echo "<br><h4>Ganancia: $ganancia</h4><br>";
+        if($ganancia==3000){
+            echo "<br><h4>¡Ganaste! $ganancia</h4><br>";
+        }else{
+            echo "<br><h4>¡Perdiste! $ganancia</h4><br>";
+        }
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
@@ -191,20 +195,18 @@ class Manchita extends Juegos
             // El usuario ya tiene un registro, actualizar la cantidad de caramelos
             $row = $result->fetch_assoc();
             $caramelosActuales = $row['caramelos'];
+            //$_SESSION['caramelosM'] = $row['caramelos'];
             if ($caramelosActuales <= 0) {
-                $newCaramelos = 0;
+                $newCaramelos = ($caramelos==-1000) ? 0 : 3000;
             } else {
                 $newCaramelos = $caramelosActuales + $caramelos;
             }
-
             $sql = "UPDATE manchita SET caramelos = ? WHERE usuario = ?";
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-
                 echo '<h3>' . $newCaramelos . '</h3>';
                 echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
-
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;
             }
