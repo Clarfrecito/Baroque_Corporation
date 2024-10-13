@@ -90,8 +90,6 @@ if (isset($_POST['enviar_codigo'])) {
     </div>
     <div id="mensaje"></div>
     <div id="volume-control" style="margin: 20px;">
-    <label for="volume-slider">Volumen:</label>
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" style="width: 200px;">
     <script>
         function enviarCodigo() {
             $.ajax({

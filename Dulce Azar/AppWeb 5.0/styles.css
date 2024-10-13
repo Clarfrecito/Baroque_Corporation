@@ -1,9 +1,10 @@
-:root{
+:root {
   --primary-color: rgb(0, 0, 0);
   --secondary-color: #00BAFF;
   --hover-color: rgb(255, 255, 255);
 }
-body{
+
+body {
   font-family: "Questrial", sans-serif;
   background-color: #1E1E1E;
   display: flex;
@@ -13,22 +14,26 @@ body{
   text-align: center;
   color: #fff;
 }
-header{
+
+header {
   margin-top: 5px;
 }
-main{
+
+main {
   margin-top: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-footer{
+
+footer {
   margin-top: 100px;
   color: #fff;
   text-align: center;
 }
-button{
+
+button {
   box-sizing: border-box;
   border: 0;
   border-radius: 20px;
@@ -46,11 +51,13 @@ button{
   text-align: center;
   font-weight: bold;
 }
-button:hover{
+
+button:hover {
   background-color: var(--secondary-color);
   color: var(--hover-color);
 }
-.div-contenedor{
+
+.div-contenedor {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,17 +67,20 @@ button:hover{
   border: 3px solid rgb(255, 255, 255);
   border-radius: 5%;
 }
-h1{
+
+h1 {
   font-size: 2rem;
   font-weight: normal;
   letter-spacing: 0.025em;
 }
-h3{
+
+h3 {
   font-size: 1rem;
   color: rgb(150, 150, 150);
   font-weight: normal;
 }
-img{
+
+img {
   height: 125px;
   width: auto;
 }

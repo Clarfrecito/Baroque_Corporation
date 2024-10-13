@@ -30,7 +30,7 @@ verificar_sesion();
         </div>
         <?php
         if (isset($_GET['jugar'])) {
-            ?>
+        ?>
             <div class="div-contenedor">
                 <h3>¿En qué rango de cartas saldrá la manchita?</h3>
                 <form method="POST" action="../Controlador/manchita.php">
@@ -45,7 +45,7 @@ verificar_sesion();
                 </form>
                 <br>
             </div>
-            <?php
+        <?php
         }
         ?>
 
@@ -54,53 +54,6 @@ verificar_sesion();
     <footer>
         <h3>2024 Dulce Azar. Creado por Baroque Corporation.</h3>
     </footer>
-    <audio id="background-music" autoplay loop>
-        <source src="../../musica.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-    <!-- Script original -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            // Recuperar la última posición guardada desde localStorage
-            var savedTime = localStorage.getItem('audioTime');
-            if (savedTime !== null) {
-                audio.currentTime = parseFloat(savedTime);
-            }
-            // Intentar reproducir el audio automáticamente
-            audio.play().catch(function (error) {
-                console.error('El audio no se pudo reproducir automáticamente:', error);
-            });
-            // Guardar la posición actual del audio en localStorage cada vez que cambie
-            audio.addEventListener('timeupdate', function () {
-                localStorage.setItem('audioTime', audio.currentTime);
-            });
-            // Escuchar cambios en localStorage para sincronizar entre ventanas/pestañas
-            window.addEventListener('storage', function (event) {
-                if (event.key === 'audioTime') {
-                    audio.currentTime = parseFloat(event.newValue);
-                }
-            });
-            // Guardar la posición cuando el usuario deja la página
-            window.addEventListener('beforeunload', function () {
-                localStorage.setItem('audioTime', audio.currentTime);
-            });
-        });
-    </script>
-    <!-- Script adicional para manejar la interacción del usuario -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            // Intentar reproducir el audio automáticamente con manejo de interacción
-            function tryToPlayAudio() {
-                audio.play().catch(function (error) {
-                    console.log('El audio no se pudo reproducir automáticamente, esperando interacción del usuario.');
-                    document.body.addEventListener('click', tryToPlayAudio);
-                });
-            }
-            tryToPlayAudio();
-        });
-    </script>
 </body>
 
 </html>

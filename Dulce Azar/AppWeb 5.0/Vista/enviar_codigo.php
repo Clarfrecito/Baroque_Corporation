@@ -27,5 +27,3 @@ if ($correoUsuario) {
 } else {
     echo "No se pudo obtener el correo del usuario.";
 }
-
-?>

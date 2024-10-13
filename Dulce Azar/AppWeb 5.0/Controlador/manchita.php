@@ -65,20 +65,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         h1 {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 45px;
             margin: 0;
             padding: 30px;
             font-size: 24px;
             color: crimson;
             font-weight: bold;
         }
+        .logo-container {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+#Logo {
+  height: 50px; /* Ajusta la altura del logo según sea necesario */
+}
     </style>
     <h1>Manchita</h1
 
 </head>
 
 <body>
-
+<div class="logo-container">
+<img src="../../DulceAzar.png" alt="Logo" id="Logo">
+</div>
 </body>
 
 </html>

@@ -27,3 +27,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <style>
+        h1 {
+            position: absolute;
+            top: 0;
+            left: 45px;
+            margin: 0;
+            padding: 30px;
+            font-size: 24px;
+            color: crimson;
+            font-weight: bold;
+        }
+        .logo-container {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+}
+#Logo {
+  height: 50px; /* Ajusta la altura del logo según sea necesario */
+}
+    </style>
+    <h1>Local Visitante</h1
+
+</head>
+
+<body>
+<div class="logo-container">
+<img src="../../DulceAzar.png" alt="Logo" id="Logo">
+</div>
+</body>
+
+</html>

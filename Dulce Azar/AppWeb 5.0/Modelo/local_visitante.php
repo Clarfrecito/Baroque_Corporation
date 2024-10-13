@@ -119,32 +119,67 @@ class LocalVisitante extends Juegos
             unset($cartas[$numero]);
             $cartas_sacadas[] = array("carta" => $sale, "valor" => $valor);
             echo " {$posiciones[$i]}: $sale<br>";
+
+            echo '<style>
+        h3{
+            margin-top:5px;
         }
-        echo '<style>
-    .cartas {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        gap:5px;
-        width: 100%;
-        margin-top: 20px;
+        .cartas {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap:5px;
+            width: 100%;
+            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        .carta {
+            width: 100px;
+            height: 200px;
+            padding: 5px;
+        }
+        .carta img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
+            margin-left: 615px;
+        }
+        img {
+            position: relative;
+        }
+                h2{
+        text-align:center;
+        color:gold;
     }
-    .carta {
-        width: 100px;
-        height: 200px;
-        padding: 5px;
+    h3{
+        color:white;
+        font-weight: bold;
+        position: absolute;
+        top: 22px;
+        left: 1292px;
     }
-    .carta img {
-        width: 100px;
-        height: 150px;
-        object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
+    h4{
+        color: orange;
+        text-align: right;
+        position: absolute;
+        top: 50px;
+        left: 1225px;
     }
-    img {
-        position: relative;
+    #carame{
+        width:50px;
+        height:50px;
+        position: absolute;
+        top: 0;
+        left: 1235px;
     }
-</style>';
-
-        echo '<div class="cartas">';
-
+        </style>';
+            echo '<div class="cartas">';
+            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
+            echo '<div class="carta">'; // Iniciar el div de la carta
+            echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
+            echo '</div>';
+        }
+        
         // Verificar si las dos cartas tienen el mismo valor
         if ($cartas_sacadas[0]['valor'] === $cartas_sacadas[1]['valor']) {
             $carta_ganadora = null;
@@ -155,10 +190,7 @@ class LocalVisitante extends Juegos
             $valor_maximo = -1;
             $posicion_ganadora = null;
             foreach ($cartas_sacadas as $index => $carta) {
-                if ($carta['valor'] > $valor_maximo) {
-                    $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
-                    echo '<div class="carta">'; // Iniciar el div de la carta
-                    echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
+                if ($carta['valor'] > $valor_maximo) { // Mostrar la imagen de la carta
                     $valor_maximo = $carta['valor'];
                     $carta_ganadora = $carta['carta'];
                     echo '</div>'; // Cerrar el div de la carta antes de salir
@@ -167,7 +199,7 @@ class LocalVisitante extends Juegos
                 }
             }
         }
-        echo '</div>';
+        
         if ($carta_ganadora !== null) {
             echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
             if ($posicion_ganadora == "Local") {
@@ -179,7 +211,7 @@ class LocalVisitante extends Juegos
             }
         } else {
             echo "¡Es un Empate!<br>";
-            $ganancia = ($apuesta == $empate) ? 3000 : -1000;
+            $ganancia = ($apuesta == $empate) ? 5000 : -1000;
             $this->ganancias($ganancia);
         }
         echo '</div>';
@@ -249,58 +281,13 @@ class LocalVisitante extends Juegos
 </head>
 
 <body>
+    
     <form action=../Vista/local_visitante.php>
         <div class="botonJugar">
             <button>Volver a Jugar</button>
         </div>
     </form>
-    <audio id="background-music" autoplay loop>
-        <source src="../../musica.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-    <!-- Script original -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            // Recuperar la última posición guardada desde localStorage
-            var savedTime = localStorage.getItem('audioTime');
-            if (savedTime !== null) {
-                audio.currentTime = parseFloat(savedTime);
-            }
-            // Intentar reproducir el audio automáticamente
-            audio.play().catch(function (error) {
-                console.error('El audio no se pudo reproducir automáticamente:', error);
-            });
-            // Guardar la posición actual del audio en localStorage cada vez que cambie
-            audio.addEventListener('timeupdate', function () {
-                localStorage.setItem('audioTime', audio.currentTime);
-            });
-            // Escuchar cambios en localStorage para sincronizar entre ventanas/pestañas
-            window.addEventListener('storage', function (event) {
-                if (event.key === 'audioTime') {
-                    audio.currentTime = parseFloat(event.newValue);
-                }
-            });
-            // Guardar la posición cuando el usuario deja la página
-            window.addEventListener('beforeunload', function () {
-                localStorage.setItem('audioTime', audio.currentTime);
-            });
-        });
-    </script>
-    <!-- Script adicional para manejar la interacción del usuario -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            // Intentar reproducir el audio automáticamente con manejo de interacción
-            function tryToPlayAudio() {
-                audio.play().catch(function (error) {
-                    console.log('El audio no se pudo reproducir automáticamente, esperando interacción del usuario.');
-                    document.body.addEventListener('click', tryToPlayAudio);
-                });
-            }
-            tryToPlayAudio();
-        });
-    </script>
+
 </body>
 
 </html>
