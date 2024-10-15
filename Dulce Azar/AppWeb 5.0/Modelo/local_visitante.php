@@ -118,7 +118,7 @@ class LocalVisitante extends Juegos
             $valor = $cartas[$numero];
             unset($cartas[$numero]);
             $cartas_sacadas[] = array("carta" => $sale, "valor" => $valor);
-            echo " {$posiciones[$i]}: $sale<br>";
+            echo " <h3 id='car'>{$posiciones[$i]}: $sale</h3><br>";
 
             echo '<style>
         h3{
@@ -139,10 +139,10 @@ class LocalVisitante extends Juegos
             padding: 5px;
         }
         .carta img {
-            width: 100px;
-            height: 150px;
+            width: 150px;
+            height: 200px;
             object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
-            margin-left: 615px;
+            margin-left: 585px;
         }
         img {
             position: relative;
@@ -150,13 +150,6 @@ class LocalVisitante extends Juegos
                 h2{
         text-align:center;
         color:gold;
-    }
-    h3{
-        color:white;
-        font-weight: bold;
-        position: absolute;
-        top: 22px;
-        left: 1292px;
     }
     h4{
         color: orange;
@@ -201,17 +194,20 @@ class LocalVisitante extends Juegos
         }
         
         if ($carta_ganadora !== null) {
-            echo "El ganador es el $posicion_ganadora con la carta $carta_ganadora<br>";
+            echo "<h2>El ganador es el $posicion_ganadora con la carta $carta_ganadora</h2>";
             if ($posicion_ganadora == "Local") {
                 $ganancia = ($apuesta == $posicion_ganadora) ? 3000 : -1000;
+                $_SESSION['empate']=null;
                 $this->ganancias($ganancia);
             } else if ($posicion_ganadora == "Visitante") {
                 $ganancia = ($apuesta == $posicion_ganadora) ? 3000 : -1000;
+                $_SESSION['empate']=null;
                 $this->ganancias($ganancia);
             }
         } else {
-            echo "¡Es un Empate!<br>";
-            $ganancia = ($apuesta == $empate) ? 5000 : -1000;
+            echo "<h2>¡Es un Empate!</h2>";
+            $ganancia = ($apuesta == $empate) ? 15000 : -1000;
+            $_SESSION['empate']=$empate;
             $this->ganancias($ganancia);
         }
         echo '</div>';
@@ -222,7 +218,7 @@ class LocalVisitante extends Juegos
         $usuario = $_SESSION['username'];
         // Determinar la cantidad de caramelos a sumar o restar
         $caramelos = $ganancia;
-        if ($ganancia == 3000) {
+        if ($ganancia == 15000 || $ganancia == 3000) {
             echo "<br><h4>¡Ganaste! $ganancia</h4><br>";
         } else {
             echo "<br><h4>¡Perdiste! $ganancia</h4><br>";
@@ -239,7 +235,11 @@ class LocalVisitante extends Juegos
             $caramelosActuales = $row['caramelos'];
             //$_SESSION['caramelosL'] = $row['caramelos'];
             if ($caramelosActuales <= 0) {
-                $newCaramelos = ($caramelos == -1000) ? 0 : 2000;
+                if (isset($_SESSION['empate'])){
+                    $newCaramelos = ($caramelos == -1000) ? 0 : 15000;
+                }else{
+                    $newCaramelos = ($caramelos == -1000) ? 0 : 3000;
+                }
             } else {
                 $newCaramelos = $caramelosActuales + $caramelos;
             }
@@ -247,7 +247,7 @@ class LocalVisitante extends Juegos
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-                echo '<h3>' . $newCaramelos . '</h3>';
+                echo '<h3 id="cant">' . $newCaramelos . '</h3>';
                 echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;

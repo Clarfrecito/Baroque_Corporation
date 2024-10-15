@@ -88,40 +88,7 @@ li a:hover {
   justify-content: center;
   border-radius: 10px;
   }
-.grid-item3{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoBingo.PNG');
-  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
-  background-position: center; /* Centra la imagen */
-  border: 3px solid rgb(255, 255, 255);
-  height: 225px;
-  width: 650px;
-  transition: 0.2s background, 0.2s transform;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
-.grid-item4{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),url('../../FondoSlot.PNG');
-  background-size: cover; /* Ajusta la imagen para cubrir todo el div */
-  background-position: center; /* Centra la imagen */
-  border: 3px solid rgb(255, 255, 255);
-  height: 225px;
-  width: 650px;
-  transition: 0.2s background, 0.2s transform;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-}
+
 .grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr; /* 2 columnas de igual tamaño */

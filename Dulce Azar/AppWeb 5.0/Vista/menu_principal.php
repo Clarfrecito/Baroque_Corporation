@@ -39,16 +39,7 @@ verificar_sesion();
                 <h1><strong>LOCAL VISITANTE</strong></h1>
             </div>
         </a>
-        <a href="#" class="grid-item3">
-            <div class="background-image3">
-                <h1><strong>BINGO LOCO</strong></h1>
-            </div>
-        </a>
-        <a href="#" class="grid-item4">
-            <div class="background-image4">
-                <h1><strong>PROXIMAMENTE</strong></h1>
-            </div>
-        </a>
+        
     </div>
 </body>
 

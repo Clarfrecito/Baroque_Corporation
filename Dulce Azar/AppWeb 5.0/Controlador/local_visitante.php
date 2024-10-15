@@ -12,6 +12,37 @@ class LocalVisitanteControlador extends LocalVisitante
         $this->conexion = $conexion;
     }
 }
+echo "<style>
+    h2{
+        text-align:center;
+        color:gold;
+    }
+    #car{
+        text-align:center;
+        color:cyan;
+    }
+    #cant{
+        color:white;
+        font-weight: bold;
+        position: absolute;
+        top: 22px;
+        left: 1292px;
+    }
+    h4{
+        color: orange;
+        text-align: right;
+        position: absolute;
+        top: 50px;
+        left: 1225px;
+    }
+    #carame{
+        width:50px;
+        height:50px;
+        position: absolute;
+        top: 0;
+        left: 1235px;
+    }
+    </style>";
 $conexion = new Conexion();
 $controlador = new LocalVisitanteControlador($conexion->conectar());
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -20,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else if (isset($_POST['apostar2'])) {
         $apuesta = isset($_POST['posicion']) ? $_POST['posicion'] : null;
         if ($apuesta !== null) {
-            echo "Apostaste por el: " . htmlspecialchars($apuesta) . "<br>"; 
+            echo "<h2>Apostaste por: " . htmlspecialchars($apuesta)."</h2>"; 
             $controlador->procesarApuesta($apuesta);
         } else {
             echo "No se ha definido una apuesta.<br>";
