@@ -1,0 +1,86 @@
+:root {
+  --primary-color: rgb(0, 0, 0);
+  --secondary-color: #00BAFF;
+  --hover-color: rgb(255, 255, 255);
+}
+
+body {
+  font-family: "Questrial", sans-serif;
+  background-color: #1E1E1E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+header {
+  margin-top: 5px;
+}
+
+main {
+  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  margin-top: 100px;
+  color: #fff;
+  text-align: center;
+}
+
+button {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--secondary-color);
+  padding: 1rem;
+  background: var(--primary-color);
+  transition: 0.2s background;
+  margin-bottom: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: auto;
+  width: 145px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  color: var(--hover-color);
+}
+
+.div-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  background-color: #1E1E1E;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 5%;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.025em;
+}
+
+h3 {
+  font-size: 1rem;
+  color: rgb(150, 150, 150);
+  font-weight: normal;
+}
+
+img {
+  height: 125px;
+  width: auto;
+}
