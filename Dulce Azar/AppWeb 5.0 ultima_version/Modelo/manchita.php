@@ -121,31 +121,6 @@ class Manchita extends Juegos
             "Comodin 1",
             "Comodin 2"
         );
-        echo '<style>
-        h3{
-            margin-top:5px;
-        }
-        .cartas {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap:5px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .carta {
-            width: 100px;
-            height: 200px;
-            padding: 5px;
-        }
-        .carta img {
-            width: 100px;
-            height: 150px;
-            object-fit: cover; /* Escalar la imagen para cubrir todo el contenedor */
-        }
-        img {
-            position: relative;
-        }
-        </style>';
 
         echo '<div class="cartas">'; // Iniciar el contenedor de la grilla
 
@@ -180,13 +155,13 @@ class Manchita extends Juegos
     {
         $usuario = $_SESSION['username'];
         $caramelos = $ganancia;
-        $_SESSION['ganarOperder']=null;
+        $_SESSION['ganarOperder'] = null;
         if ($ganancia == 3000) {
             echo "<br><h4 style='color: green;'>¡Ganaste! $ganancia</h4><br>";
         } elseif ($ganancia == -1000) {
             echo "<br><h4 style='color: red;'>¡Perdiste! $ganancia</h4><br>";
         }
-        
+
         // Primero, verificar si el usuario ya tiene un registro en la tabla manchita
         $sql = "SELECT caramelos FROM manchita WHERE usuario = ?";
         $stmt = $this->conexion->prepare($sql);
@@ -199,7 +174,7 @@ class Manchita extends Juegos
             $caramelosActuales = $row['caramelos'];
             //$_SESSION['caramelosM'] = $row['caramelos'];
             if ($caramelosActuales <= 0) {
-                $newCaramelos = ($caramelos==-1000) ? 0 : 3000;
+                $newCaramelos = ($caramelos == -1000) ? 0 : 3000;
             } else {
                 $newCaramelos = $caramelosActuales + $caramelos;
             }
@@ -207,7 +182,7 @@ class Manchita extends Juegos
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("is", $newCaramelos, $usuario);
             if ($stmt->execute()) {
-                echo '<h3>' . $newCaramelos . '</h3>';
+                echo '<h3 id="cant">' . $newCaramelos . '</h3>';
                 echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al actualizar caramelos: " . $stmt->error;
@@ -232,7 +207,6 @@ class Manchita extends Juegos
 <head>
     <title>Manchita</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../Vista/stylesManchita.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
 </head>
@@ -244,5 +218,113 @@ class Manchita extends Juegos
         </div>
     </form>
 </body>
+<style>
+    :root {
+        --primary-color: rgb(0, 0, 0);
+        --secondary-color: #00BAFF;
+        --hover-color: rgb(255, 255, 255);
+    }
+
+    body {
+        font-family: "Questrial", sans-serif;
+        background-color: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    button {
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 20%;
+        color: var(--secondary-color);
+        padding: 1rem;
+        background: var(--primary-color);
+        transition: 0.2s background;
+        margin-top: 5%;
+        height: auto;
+        width: 75%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background-color: var(--secondary-color);
+        color: var(--hover-color);
+    }
+
+    .cartas {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        gap: 5px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .carta {
+        width: 100px;
+        height: 200px;
+        padding: 5px;
+    }
+
+    .carta img {
+        width: 100px;
+        height: 150px;
+        object-fit: cover;
+        /* Escalar la imagen para cubrir todo el contenedor */
+    }
+
+    .logo-container {
+        position: absolute;
+        top: 2%;
+        left: 0;
+    }
+
+    #Logo {
+        height: 3em;
+    }
+
+    #carame {
+        width: 4%;
+        height: 7%;
+        position: absolute;
+        top: 2%;
+        left: 89.5%;
+    }
+
+    #cant {
+        color: orange;
+        font-weight: bold;
+        position: absolute;
+        top: 2%;
+        left: 94%;
+    }
+
+    h1 {
+        position: absolute;
+        top: 1.25%;
+        left: 7%;
+        font-size: 1.5em;
+        color: crimson;
+        font-weight: bold;
+    }
+
+    h2 {
+        text-align: center;
+        color: gold;
+    }
+
+
+    h4 {
+        text-align: center;
+        position: absolute;
+        top: 8%;
+        left: 90.5%;
+    }
+</STYLE>
 
 </html>

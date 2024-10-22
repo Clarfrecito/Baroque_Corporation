@@ -12,7 +12,7 @@ class RegistrarControlador extends Usuario
     }
     public function registrar()
     {
-        if (isset($_POST['registrarse'])) { 
+        if (isset($_POST['registrarse'])) {
             if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
                 $filtroUsername = "[A-Za-z0-9_]{5,20}";
                 $filtroEmail = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}";
@@ -20,7 +20,7 @@ class RegistrarControlador extends Usuario
                     $username = $this->limpiar_cadena($_POST['username']);
                     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
                     $email = $this->limpiar_cadena($_POST['email']);
-                    $caramelos=1000;
+                    $caramelos = 1000;
 
                     $stmt = $this->conexion->prepare("INSERT INTO usuarios (username, email, password,caramelos) VALUES (?, ?, ?, ?)");
                     $stmt->bind_param("sssi", $username, $email, $password, $caramelos);
@@ -70,16 +70,16 @@ class RegistrarControlador extends Usuario
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usernameOrEmail = $this->limpiar_cadena($_POST["usernameOrEmail"]);
             $password = $_POST["password"];
-            
+
             $stmt = $this->conexion->prepare("SELECT * FROM usuarios WHERE username = ? OR email = ?");
             $stmt->bind_param("ss", $usernameOrEmail, $usernameOrEmail);
             $stmt->execute();
             $result = $stmt->get_result();
             if ($result && $result->num_rows == 1) {
-                $row = $result->fetch_assoc(); 
+                $row = $result->fetch_assoc();
                 if (password_verify($password, $row["password"])) {
-                    $_SESSION['username'] = $row['username']; 
-                    $_SESSION['id_usuario'] = $row['id']; 
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['id_usuario'] = $row['id'];
                     header("Location: ../Vista/menu_principal.php");
                     exit();
                 } else {
@@ -134,7 +134,6 @@ class RegistrarControlador extends Usuario
         $cadena = str_ireplace("::", "", $cadena);
         return $cadena;
     }
-    
 }
 
 $conexion = new Conexion();

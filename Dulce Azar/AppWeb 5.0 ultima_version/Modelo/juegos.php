@@ -69,7 +69,7 @@ class Juegos
                     $stmt_insert = $this->conexion->prepare($sql_insert);
                     $stmt_insert->bind_param("s", $nombre);
                     if ($stmt_insert->execute()) {
-                        $id_juego = $this->conexion->insert_id; 
+                        $id_juego = $this->conexion->insert_id;
                     } else {
                         echo "Error al insertar el juego: " . $stmt_insert->error;
                         return null;

@@ -1,5 +1,6 @@
 <?php
-function verificar_sesion() {
+function verificar_sesion()
+{
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
