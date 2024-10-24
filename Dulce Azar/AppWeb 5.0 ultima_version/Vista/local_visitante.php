@@ -14,9 +14,7 @@ verificar_sesion();
 
 <body>
   <header>
-    <!--
-        <img src="https://i.ibb.co/Ny9Nb46/k4u-UAAAAASUVORK5-CYII.png" id="Logo" border="0">
-        -->
+        <img src="../../DulceAzar.png" id="Logo" border="0">
   </header>
   <main>
     <h1>Local/Visitante</h1>
