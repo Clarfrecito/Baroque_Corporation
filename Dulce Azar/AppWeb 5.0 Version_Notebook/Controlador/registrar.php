@@ -98,7 +98,7 @@ class RegistrarControlador extends Usuario
         }
     }
 
-    public function verificar_datos($filtro, $cadena)
+    function verificar_datos($filtro, $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
             return true;
@@ -106,7 +106,7 @@ class RegistrarControlador extends Usuario
             return false;
         }
     }
-    public function limpiar_cadena($cadena)
+    function limpiar_cadena($cadena)
     {
         $cadena = trim($cadena);
         $cadena = stripslashes($cadena);

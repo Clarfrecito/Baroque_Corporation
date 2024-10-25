@@ -7,9 +7,9 @@ class Usuario
     {
         $this->conexion = Conexion::conectar();
     }
-    public function registrarse(){}
 
-    public function login(){}
-
-    public function logout(){}
+    public function caramelos()
+    {
+        //HACER LA SUMA DE LOS CARAMELOS DE CADA JUEGO    
+    }
 }

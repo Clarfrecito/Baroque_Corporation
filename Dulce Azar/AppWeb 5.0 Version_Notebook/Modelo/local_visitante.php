@@ -329,22 +329,22 @@ class LocalVisitante extends Juegos
 
     #car {
         text-align: center;
-        color: cyan;
+        color: white;
     }
 
     #cant {
         color: orange;
         font-weight: bold;
         position: absolute;
-        top: 2%;
+        top: 1.5%;
         left: 94%;
     }
 
     #carame {
-    width: 2%;  /* Ajusta el ancho del caramelo */
-    height: 5%; /* Ajusta la altura del caramelo */
+    width: 3%;  /* Ajusta el ancho del caramelo */
+    height: 6%; /* Ajusta la altura del caramelo */
     position: absolute;
-    top: 2%;
+    top: 3%;
     left: 89.5%;
     }
 
@@ -356,6 +356,7 @@ class LocalVisitante extends Juegos
 
     #Logo {
         height: 3em;
+        top: 0;
     }
 
     h1 {
@@ -368,16 +369,31 @@ class LocalVisitante extends Juegos
     }
 
     h2 {
+        position: absolute; /* O fixed, dependiendo de tu necesidad */
+        bottom: 1%; /* Posiciona el elemento en la parte inferior */
+        left: 50%; /* Centra horizontalmente */
+        transform: translateX(-50%); /* Ajusta el centro */
         text-align: center;
-        color: gold;
-        margin-top: 3%;
+        color: white;
+        margin-bottom: 0; /* Elimina márgenes para un mejor posicionamiento */
+        padding: 2%; /* Puedes ajustar el padding si lo deseas */
     }
+
 
     h4 {
         text-align: center;
         position: absolute;
-        top: 8%;
-        left: 90.5%;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+    }
+
+    h5 {
+        text-align: center;
+        color: white;
+        margin-top: 3%;
+        font-size: 2rem;
     }
 </style>
 

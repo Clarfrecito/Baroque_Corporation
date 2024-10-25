@@ -17,7 +17,7 @@ verificar_sesion();
     <img src="../../DulceAzar.png" alt="Logo">
   </header>
   <main>
-    <h1>Local/Visitante</h1>
+    <h1>Manchita</h1>
     <div class="div-contenedor" id="div1">
       <h1>El Juego de la Manchita</h1>
       <form method="POST" action="../Controlador/manchita.php">
@@ -69,10 +69,6 @@ verificar_sesion();
     color: #fff;
   }
 
-  header {
-    margin-top: 25px;
-  }
-
   main {
     margin-top: 125px;
     display: flex;
@@ -82,7 +78,7 @@ verificar_sesion();
   }
 
   footer {
-    margin-top: 7%;
+    margin-top: 103px;
     color: #fff;
     text-align: center;
   }

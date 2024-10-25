@@ -261,7 +261,7 @@ class Manchita extends Juegos
     h4 {
         text-align: center;
         position: absolute;
-        top: 11%;
+        top: 15%;
         left: 50%;
         transform: translateX(-50%);
         font-size: 2rem;
@@ -298,10 +298,10 @@ class Manchita extends Juegos
     }
 
     #carame {
-    width: 2%;  /* Ajusta el ancho del caramelo */
-    height: 5%; /* Ajusta la altura del caramelo */
+    width: 3%;  /* Ajusta el ancho del caramelo */
+    height: 6%; /* Ajusta la altura del caramelo */
     position: absolute;
-    top: 2%;
+    top: 3%;
     left: 89.5%;
     }
 
@@ -310,7 +310,7 @@ class Manchita extends Juegos
         font-weight: bold;
         position: absolute;
         top: 1.5%;
-        left: 93%;
+        left: 94%;
     }
 
     h1 {

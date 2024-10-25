@@ -11,16 +11,8 @@ verificar_sesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <?php
-    //$usuario=$_SESSION['username'];
-    /*echo "<style>
-            #u{
-                font-size: 2rem;
-                font-weight: normal;
-                letter-spacing: 0.025em;
-                transition: color 0.3s ease, transform 0.3s ease;
-            }   
-          </style>";
-    echo "<h1 id=u>$usuario</h1>";*/
+    //$_SESSION['caramelosTotales'] = $_SESSION['caramelosM'] + $_SESSION['caramelosL'];
+    //echo $caramelosTotales;
     ?>
 </head>
 
@@ -79,6 +71,7 @@ verificar_sesion();
         font-weight: normal;
         letter-spacing: 0.025em;
         transition: color 0.3s ease, transform 0.3s ease;
+        /* Transición suave */
     }
 
     ul {
@@ -101,11 +94,20 @@ verificar_sesion();
         text-decoration: none;
         /* Elimina el subrayado de los enlaces */
     }
-
+    li button{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        /* Elimina el subrayado de los enlaces */
+        font-weight: bold;
+    }
     li a:hover {
         background-color: #111;
         text-decoration: none;
         /* Asegura que no haya subrayado al hacer hover */
+        
     }
     
 

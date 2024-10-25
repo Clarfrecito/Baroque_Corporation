@@ -75,7 +75,7 @@ verificar_sesion();
   }
 
   footer {
-    margin-top: 103px;
+    margin-top: 7%;
     color: #fff;
     text-align: center;
   }
@@ -123,7 +123,7 @@ verificar_sesion();
 
   h3 {
     font-size: 1rem;
-    color: rgb(150, 150, 150);
+    color: white;
     font-weight: normal;
   }
 

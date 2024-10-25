@@ -11,11 +11,12 @@
 
 <body>
     <header>
-        <a href="../index.php">
-            <img src="../../DulceAzar.png" alt="Logo">
-        </a>
+
     </header>
     <main>
+    <a href="../index.php">
+            <img src="../../DulceAzar.png" alt="Logo">
+        </a>
         <form method="post" action="../Controlador/registrar.php">
             <div class="div-contenedor">
                 <h1>Registrarse</h1>
@@ -54,12 +55,9 @@
     color: #fff;
   }
 
-    header {
-        margin-top: 1%;
-    }
 
     main {
-    margin-top: 3%;
+    margin-top: 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +94,7 @@
     }
 
     .div-contenedor {
-    margin-top: 50%;
+    margin-top: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,7 +137,7 @@
 
     img {
         margin-top: 10px;
-        height: 20%;
+        height: 15%;
         position: absolute;
         top: 0;
         right: 0;

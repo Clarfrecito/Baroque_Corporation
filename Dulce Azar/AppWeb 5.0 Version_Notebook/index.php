@@ -58,7 +58,7 @@
   }
 
   footer {
-    margin-top: 10%;
+    margin-top: 3%;
     text-align: center;
     padding: 1rem 0;
 }
@@ -114,8 +114,8 @@
   }
 
   img {
-    height: 45%;
-    width: 45%;
+    height: 30%;
+    width: 30%;
   }
 </style>
 
