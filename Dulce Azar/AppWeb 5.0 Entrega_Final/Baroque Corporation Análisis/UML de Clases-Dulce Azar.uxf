@@ -1,0 +1,46 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><element><id>UMLClass</id><coordinates><x>196</x><y>126</y><w>112</w><h>84</h></coordinates><panel_attributes>Usuario
+-
+- conexion: myslqli
+-
++registrarse(): void
++login(): void
++logout(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>119</x><y>259</y><w>182</w><h>77</h></coordinates><panel_attributes>RegistrarControlador
+-
+- conexion: mysqli
+-
++verificar_datos($filtro,$cadena):boolean
++limpiar_cadena($cadena):String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>161</x><y>0</y><w>112</w><h>70</h></coordinates><panel_attributes>Conexion
+-
+- conexion: mysli
+-
++conectar(): mysqli
++cerrar(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>399</x><y>56</y><w>238</w><h>112</h></coordinates><panel_attributes>Juegos
+-
+- conexion: mysqli
+-
++iniciarJuego($nombre): void
++registrarSesionJuego($id_usuario, $nombre): void
++finalizarJuego($id_juego): void
++registrarJuego($nombre): mixed</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>280</y><w>161</w><h>91</h></coordinates><panel_attributes>Manchita
+-
+- conexion: mysqli
+-
++conectarUsuario(): void
++procesarApuesta($apuesta): String
++ganancias($ganancia): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>329</x><y>280</y><w>161</w><h>91</h></coordinates><panel_attributes>LocalVisitante
+-
+- conexion: mysqli
+-
++conectarUsuario(): void
++procesarApuesta($apuesta): String
++ganancias($ganancia): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>595</x><y>413</y><w>126</w><h>49</h></coordinates><panel_attributes>ManchitaControlador
+-
+- conexion: mysqli
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>350</x><y>413</y><w>126</w><h>49</h></coordinates><panel_attributes>LocalVisitanteControlador
+-
+- conexion: mysqli
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>455</x><y>203</y><w>126</w><h>49</h></coordinates><panel_attributes>JuegosControlador
+-
+- conexion: mysqli
+-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>203</x><y>203</y><w>49</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;50;50;10;50;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>511</x><y>161</y><w>21</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>161</y><w>189</w><h>133</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>250;10;250;150;10;150;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>616</x><y>161</y><w>21</w><h>133</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>406</x><y>364</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>651</x><y>364</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>238</x><y>63</y><w>21</w><h>77</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>0</y><w>273</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;370;10;370;80</additional_attributes></element><element><id>Relation</id><coordinates><x>175</x><y>63</y><w>21</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>21</y><w>203</w><h>224</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;10;170;300;270;300</additional_attributes></element><element><id>Relation</id><coordinates><x>63</x><y>42</y><w>301</w><h>413</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>140;10;20;10;10;570;410;570</additional_attributes></element><element><id>Relation</id><coordinates><x>28</x><y>0</y><w>770</w><h>504</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>190;10;20;10;10;700;1080;700;1080;470;1020;470</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>42</y><w>112</w><h>252</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;140;10;140;340</additional_attributes></element><element><id>Relation</id><coordinates><x>42</x><y>21</y><w>567</w><h>469</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;10;20;10;10;650;710;650;710;600;790;600</additional_attributes></element></diagram>
