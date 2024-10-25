@@ -13,14 +13,15 @@ verificar_sesion();
 </head>
 
 <body>
-    <h2>Esta pagina fue creaca por Baroque Corporation</h2>
+    <h2>Esta pagina fue creada por Baroque Corporation</h2>
     <h1>Baroque Corporation es una empresa/grupo de programacion ficticio que fundamos para el desarrollo del proyecto anual de Analisis de Sistemas</h1>
     <h2>Integrantes:</h2>
-    <h1>Tomas Palumbo</h1>
-    <h1>Juan Freire</h1>
-    <h1>Sol Oliveti</h1>
-    <h1>Marco Montarne</h1>
-    <h1>Santino Solferino</h1>
+    <h3>Tomas Palumbo</h3>
+    <h3>Juan Freire</h>
+    <h3>Sol Oliveti</h3>
+    <h3>Marco Montarner</h3>
+    <h3>Santino Solferino</h3>
+    
     <form action="menu_principal.php">
         <button type="submit">Volver</button>
     </form>
@@ -75,15 +76,20 @@ verificar_sesion();
     }
 
     h1 {
+        color: cadetblue;
         font-size: 1.25rem;
         font-weight: normal;
         letter-spacing: 0.025em;
     }
 
     h2 {
+        color: aquamarine;
         font-size: 1.5rem;
         font-weight: bold;
         letter-spacing: 0.025em;
+    }
+    h3{
+        color: cornsilk;
     }
 </style>
 

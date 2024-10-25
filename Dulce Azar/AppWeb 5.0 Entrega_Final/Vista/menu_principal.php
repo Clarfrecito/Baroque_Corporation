@@ -11,8 +11,16 @@ verificar_sesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <?php
-    //$_SESSION['caramelosTotales'] = $_SESSION['caramelosM'] + $_SESSION['caramelosL'];
-    //echo $caramelosTotales;
+    //$usuario=$_SESSION['username'];
+    /*echo "<style>
+            #u{
+                font-size: 2rem;
+                font-weight: normal;
+                letter-spacing: 0.025em;
+                transition: color 0.3s ease, transform 0.3s ease;
+            }   
+          </style>";
+    echo "<h1 id=u>$usuario</h1>";*/
     ?>
 </head>
 
@@ -22,6 +30,7 @@ verificar_sesion();
     <ul>
         <li><a href="acerca.php">Acerca de</a></li>
         <li><a href="instrucciones.php">¿Como jugar?</a></li>
+        <li><a href="info.php">Información</a></li>
         <li>
             <form method="POST" action="../Controlador/registrar.php"><button type="submit" name="logout">Cerrar Sesión</button></form>
         </li>
@@ -70,7 +79,6 @@ verificar_sesion();
         font-weight: normal;
         letter-spacing: 0.025em;
         transition: color 0.3s ease, transform 0.3s ease;
-        /* Transición suave */
     }
 
     ul {

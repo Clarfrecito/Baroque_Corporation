@@ -69,21 +69,27 @@ verificar_sesion();
 
 <body>
     <h1>Reglas de los Juegos</h1>
-
     <div class="game-rules">
         <h2>Juego 1: Manchita</h2>
         <p>El juego consiste en apostar el rango de cartas correcto (de a 10) en el que saldrá la carta 1 de oro. Se
             tirarán todas las 50 cartas hasta que salga esa. Si la apuesta del usuario es correcta y la carta sale en ese
-            rango especificado, el usuario gana, sino pierde.</p>
+            rango especificado, el usuario gana, sino pierde. Al acertar en el rango apostado, la ganancia será de 3000 caramelos,
+            si se apuesta por un rango erróneo se perderan 1000 caramelos.
+        </p>
     </div>
 
     <div class="game-rules">
         <h2>Juego 2: Local/Visitante</h2>
         <p>El juego consiste en apostar qué jugador equipo va a ganar: el Local, el Visitante o el Empate entre estos
             dos. Se lanzarán 2 cartas, y con respecto a los valores de cartas del truco, se determinará el ganador. En
-            este juego son 48 cartas ya que no están incluidos los comodines.</p>
+            este juego son 48 cartas ya que no están incluidos los comodines. Al apostar por el "Local" y acertar, la
+            ganancia será de 3000 caramelos, si pierde se le restarán 1000 caramelos. Lo mismo sucedera con al apostar 
+            por el "Visitante". En cambio si se apuesta por el "Empate", la ganancia será de 15000 caramelos, esto se 
+            debe a que es mas difícil que las cartas empaten por lo que la ganancia es mayor al acertar, sino acierta 
+            perdera 1000 caramelos.
+        </p>
     </div>
-
+    <!--Nota: Nota: Los caramelos son pertenecientes a cada juego, cada usuario tiene una cantidad de caramelos, separada, para los dos juegos. -->
     <form method="POST" action="menu_principal.php">
         <button type="submit">Volver</button>
     </form>
