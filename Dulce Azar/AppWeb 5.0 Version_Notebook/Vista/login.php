@@ -15,13 +15,14 @@
         </a>
     </header>
     <main>
-        <form action="../Controlador/registrar.php" method="post">
-            <div class="div-contenedor">
+        <div class="div-contenedor">
+            <form method="post" action="../Controlador/registrar.php">
                 <h1>Inicio de Sesion</h1>
-                <input type="text" id="usernameOrEmail" name="usernameOrEmail" required placeholder="Usuario/Email"><br><br>
+                <input type="text" id="usernameOrEmail" name="usernameOrEmail" required
+                    placeholder="Usuario/Email"><br><br>
                 <input type="password" id="password" name="password" required placeholder="Contraseña"><br><br>
                 <button type="submit" name="login">Iniciar Sesion</button>
-        </form>
+            </form>
         </div>
     </main>
     <footer>
@@ -63,22 +64,22 @@
     }
 
     button {
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 10px;
-    color: var(--secondary-color);
-    padding: 1rem;
-    background: var(--primary-color);
-    transition: 0.5s background;
-    margin-bottom: 7.5%;
-    margin-top: 7.5%;
-    height: auto;
-    width: 50%;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-}
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 10px;
+        color: var(--secondary-color);
+        padding: 1rem;
+        background: var(--primary-color);
+        transition: 0.5s background;
+        margin-bottom: 7.5%;
+        margin-top: 7.5%;
+        height: auto;
+        width: 50%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+    }
 
     button:hover {
         background-color: var(--secondary-color);
@@ -86,17 +87,17 @@
     }
 
     .div-contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2vw;
-    background-color: #1E1E1E;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 5%;
-    width: 80%;
-    max-width: 1200px;
-    min-height: 25vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2vw;
+        background-color: #1E1E1E;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 5%;
+        width: 80%;
+        max-width: 1200px;
+        min-height: 25vh;
     }
 
     h1 {

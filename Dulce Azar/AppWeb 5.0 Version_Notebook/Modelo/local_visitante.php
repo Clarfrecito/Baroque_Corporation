@@ -1,5 +1,4 @@
 <?php
-//Terminar L/V
 require_once 'conex_bd.php';
 require_once 'juegos.php';
 require_once '../Utiles/verificar_sesion.php';
@@ -219,7 +218,8 @@ class LocalVisitante extends Juegos
             $stmt->bind_param("si", $usuario, $caramelos);
 
             if ($stmt->execute()) {
-                echo "Registro de caramelos creado correctamente.";
+                echo '<h3 id="cant">' . $caramelos . '</h3>';
+                echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al crear el registro: " . $stmt->error;
             }

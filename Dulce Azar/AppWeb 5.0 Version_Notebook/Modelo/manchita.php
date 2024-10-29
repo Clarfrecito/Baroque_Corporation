@@ -133,10 +133,10 @@ class Manchita extends Juegos
             array_splice($cartas, $numero, 1);
             $posicion = $i + 1;
 
-          $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
+            $imagen = strtolower(str_replace(' ', '_', $sale)) . '.png'; // Construir el nombre de archivo de la imagen
             echo '<div class="carta" id="carta-' . $i . '">'; // Iniciar el div de la carta con un ID único
             echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
-            
+
             if ($sale == "1 de Oros") {
                 $manchita = "<br>La manchita salió en la posición $posicion<br>";
                 $ganancia = in_array($i + 1, $apuesta) ? 3000 : -1000;
@@ -194,7 +194,10 @@ class Manchita extends Juegos
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param("si", $usuario, $caramelos);
 
-            if (!$stmt->execute()) {
+            if ($stmt->execute()) {
+                echo '<h3 id="cant">' . $caramelos . '</h3>';
+                echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
+            } else {
                 echo "Error al crear el registro: " . $stmt->error;
             }
         }
@@ -298,11 +301,13 @@ class Manchita extends Juegos
     }
 
     #carame {
-    width: 3%;  /* Ajusta el ancho del caramelo */
-    height: 6%; /* Ajusta la altura del caramelo */
-    position: absolute;
-    top: 3%;
-    left: 89.5%;
+        width: 3%;
+        /* Ajusta el ancho del caramelo */
+        height: 6%;
+        /* Ajusta la altura del caramelo */
+        position: absolute;
+        top: 3%;
+        left: 89.5%;
     }
 
     #cant {

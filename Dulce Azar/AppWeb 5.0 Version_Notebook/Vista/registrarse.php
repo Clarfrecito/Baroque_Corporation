@@ -14,11 +14,11 @@
 
     </header>
     <main>
-    <a href="../index.php">
+        <a href="../index.php">
             <img src="../../DulceAzar.png" alt="Logo">
         </a>
-        <form method="post" action="../Controlador/registrar.php">
-            <div class="div-contenedor">
+        <div class="div-contenedor">
+            <form method="post" action="../Controlador/registrar.php">
                 <h1>Registrarse</h1>
                 <input type="text" name="username" required placeholder="Nombre completo">
                 <br>
@@ -26,11 +26,11 @@
                 <input type="password" name="password" required placeholder="Contraseña">
                 <br>
                 <br>
-                <input type="email" name="email" required placeholder="Correo electronico">
+                <input type="email" name="email" required placeholder="Email">
                 <br>
                 <br>
                 <button type=submit name=registrarse>Registrarse</button>
-        </form>
+            </form>
         </div>
     </main>
     <footer>
@@ -45,24 +45,24 @@
     }
 
     body {
-    font-family: "Questrial", sans-serif;
-    background-color: #1E1E1E;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-  }
+        font-family: "Questrial", sans-serif;
+        background-color: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+    }
 
 
     main {
-    margin-top: 1%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+        margin-top: 1%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     footer {
         margin-top: 3%;
@@ -71,22 +71,22 @@
     }
 
     button {
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 10px;
-    color: var(--secondary-color);
-    padding: 1rem;
-    background: var(--primary-color);
-    transition: 0.2s background;
-    margin-top: 5%;
-    margin-bottom: 1rem;
-    height: auto;
-    width: 60%;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-}
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 10px;
+        color: var(--secondary-color);
+        padding: 1rem;
+        background: var(--primary-color);
+        transition: 0.2s background;
+        margin-top: 5%;
+        margin-bottom: 1rem;
+        height: auto;
+        width: 60%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+    }
 
     button:hover {
         background-color: var(--secondary-color);
@@ -94,24 +94,25 @@
     }
 
     .div-contenedor {
-    margin-top: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2vw;
-    background-color: #1E1E1E;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 5%;
-    width: 80%;
-    max-width: 1200px;
-    min-height: 25vh;
-}
+        margin-top: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2vw;
+        background-color: #1E1E1E;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 5%;
+        width: 80%;
+        max-width: 1200px;
+        min-height: 25vh;
+    }
+
     h1 {
         font-size: 2rem;
         font-weight: normal;
         letter-spacing: 0.025em;
-        margin-bottom:20%;
+        margin-bottom: 20%;
     }
 
     h3 {

@@ -4,16 +4,8 @@ require_once '../Modelo/conex_bd.php';
 require_once '../Utiles/verificar_sesion.php';
 verificar_sesion();
 
-class JuegosControlador extends Juegos
-{
-    public function __construct($conexion)
-    {
-        parent::__construct($conexion);
-    }
-}
-
 $conexion = new Conexion();
-$juegosControlador = new JuegosControlador($conexion->conectar());
+$juegosControlador = new Juegos($conexion->conectar());
 
 if (isset($_GET['juego1'])) {
     $nombre_juego = $_GET['juego1'];
