@@ -82,7 +82,7 @@ verificar_sesion();
 
   footer {
     margin-bottom: auto;
-    margin-top: 5%;
+    margin-top: 3%;
     color: #fff;
     text-align: center;
   }
