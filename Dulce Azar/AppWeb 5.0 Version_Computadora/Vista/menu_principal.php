@@ -11,21 +11,12 @@ verificar_sesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <?php
-    //$usuario=$_SESSION['username'];
-    /*echo "<style>
-            #u{
-                font-size: 2rem;
-                font-weight: normal;
-                letter-spacing: 0.025em;
-                transition: color 0.3s ease, transform 0.3s ease;
-            }   
-          </style>";
-    echo "<h1 id=u>$usuario</h1>";*/
+    //$_SESSION['caramelosTotales'] = $_SESSION['caramelosM'] + $_SESSION['caramelosL'];
+    //echo $caramelosTotales;
     ?>
 </head>
 
 <body>
-    <img src="../../DulceAzar.png" alt="Logo" id="Logo">
     <h1>Dulce Azar</h1>
     <ul>
         <li><a href="acerca.php">Acerca de</a></li>
@@ -51,15 +42,18 @@ verificar_sesion();
 </body>
 <style>
     :root {
-        --primary-color: rgb(0, 0, 0);
-        --secondary-color: #00BAFF;
-        --hover-color: rgb(255, 255, 255);
+    --primary-color: rgb(0, 0, 0);
+    --secondary-color: rgb(61, 12, 8);
+    --hover-color: rgb(255, 255, 255);
     }
 
     body {
         font-family: "Questrial", sans-serif;
-        background-color: #1E1E1E;
         color: white;
+        background-image: url('../../fondoM.PNG');
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: center;
     }
 
     .grid-item1:hover {
@@ -86,7 +80,7 @@ verificar_sesion();
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: rgb(22, 22, 22);
     }
 
     li {
@@ -94,18 +88,32 @@ verificar_sesion();
     }
 
     li a {
+        font-family: 'Questrial', sans-serif;
+        font-style: normal; /* 'none' no es válido para font-style; usa 'normal' */
         display: block;
         color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        /* Elimina el subrayado de los enlaces */
+        font-weight: normal;
+    }
+    li button {
+        font-family: 'Questrial', sans-serif;
+        font-style: normal; /* 'none' no es válido para font-style; usa 'normal' */
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: normal; /* Cambia 'bold' a 'normal' para quitar la negrita */
+        font-size: 1rem;
     }
 
     li a:hover {
         background-color: #111;
         text-decoration: none;
         /* Asegura que no haya subrayado al hacer hover */
+        
     }
     
 
@@ -115,7 +123,7 @@ verificar_sesion();
         background-repeat: no-repeat;
         background-position: center;
         border: 3px solid rgb(255, 255, 255);
-        height: 100%;
+        height: 94%;
         width: 97.5%;
         transition: 0.2s background, 0.2s transform;
         cursor: pointer;
@@ -125,7 +133,7 @@ verificar_sesion();
         text-align: center;
         align-items: center;
         justify-content: center;
-        border-radius: 15px;
+        border-radius: 10px;
         margin: 15px auto;
 }
 
@@ -135,7 +143,7 @@ verificar_sesion();
         background-repeat: no-repeat;
         background-position: center;
         border: 3px solid rgb(255, 255, 255);
-        height: 100%;
+        height: 94%;
         width: 97.5%;
         transition: 0.2s background, 0.2s transform;
         cursor: pointer;
@@ -145,51 +153,31 @@ verificar_sesion();
         text-align: center;
         align-items: center;
         justify-content: center;
-        border-radius: 15px;
+        border-radius: 10px;
         margin: 15px auto;
     }
 
     .grid-container {
         display: grid;
         width: 100%;
-        height: 75vh;
+        height: 79vh;
         grid-template-columns: repeat(2, 1fr);
         margin: 0;
         gap: 20px;
-    }
-
-    #Logo {
-        margin-top: 13.5px;
-        height: 10%;
-        position: absolute;
-        top: 0;
-        right: 0;
+        
     }
 
     li body {
         font-family: "Questrial", sans-serif;
-        background-color: #1E1E1E;
+        background-color: rgb(22, 22, 22);
         color: white;
-    }
-
-    #logo-container {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-    }
-
-    #Logo {
-        height: 50px;
-        /* Ajusta la altura del logo según sea necesario */
     }
 
     .grid-item:hover {
         font-weight: bold;
         color: black;
-        background-color: #666;
-        /* Color de fondo al pasar el ratón */
+        background-color: rgb(255, 255, 255);
         transform: scale(1.05);
-        /* Efecto de zoom al pasar el ratón */
     }
 
     h1 {
@@ -212,12 +200,12 @@ verificar_sesion();
 
     li a,
     li button {
+        
         display: block;
         color: white;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        /* Elimina el subrayado de los enlaces */
         background: none;
         border: none;
         cursor: pointer;

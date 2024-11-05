@@ -30,7 +30,7 @@
 <style>
   :root {
     --primary-color: rgb(0, 0, 0);
-    --secondary-color: #00BAFF;
+    --secondary-color: rgb(61, 12, 8);
     --hover-color: rgb(255, 255, 255);
   }
 
@@ -42,7 +42,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    background-image: url('../../Fondo.PNG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   header {
@@ -58,53 +61,62 @@
   }
 
   footer {
-    margin-top: 10%;
+    margin-top: 2.5%;
     text-align: center;
     padding: 1rem 0;
 }
 
 
-  button {
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 10px;
-    color: var(--secondary-color);
-    padding: 1rem;
-    background: var(--primary-color);
-    transition: 0.2s background;
-    margin-top: 5%;
-    margin-bottom: 1rem;
-    height: auto;
-    width: 100%;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-}
+button {
+        font-family: 'Questrial', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.075em;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        padding: 1rem;
+        background: rgb(185, 19, 9);
+        transition: 0.2s background;
+        margin-top: 10%;
+        margin-bottom: 5%;
+        height: auto;
+        width: 100%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+    }
 
-  button:hover {
-    background-color: var(--secondary-color);
-    color: var(--hover-color);
-  }
+    button:hover {
+        background-color: var(--secondary-color);
+        color: var(--hover-color);
+    }
+
+    input:focus {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
 
   .div-contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2vw;
-    background-color: #1E1E1E;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 5%;
-    width: 80%;
-    max-width: 1200px;
-    min-height: 25vh;
+  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2vw;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 80%;
+        max-width: 1200px;
+        min-height: 25vh;
     }
 
   h1 {
     font-size: 2rem;
     font-weight: normal;
     letter-spacing: 0.025em;
+    color: white;
   }
 
   h3 {
@@ -114,8 +126,8 @@
   }
 
   img {
-    height: 45%;
-    width: 45%;
+    height: 30%;
+    width: 30%;
   }
 </style>
 

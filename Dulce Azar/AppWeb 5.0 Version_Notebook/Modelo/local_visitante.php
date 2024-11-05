@@ -243,7 +243,7 @@ class LocalVisitante extends Juegos
 
     <form action=../Vista/local_visitante.php>
         <div class="botonJugar">
-            <button>Volver a Jugar</button>
+            <button>Volver a Atras</button>
         </div>
     </form>
 
@@ -251,38 +251,46 @@ class LocalVisitante extends Juegos
 <style>
     :root {
         --primary-color: rgb(0, 0, 0);
-        --secondary-color: #00BAFF;
+        --secondary-color: rgb(61, 12, 8);
         --hover-color: rgb(255, 255, 255);
     }
 
     body {
         font-family: "Questrial", sans-serif;
-        background-color: #1E1E1E;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        background-image: url('../../FondoM.PNG');
+        background-size: 100%;
+        background-repeat: repeat;
+        background-position: center;
     }
 
     button {
+        font-family: 'Questrial', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.075em;
         box-sizing: border-box;
         border: 0;
-        border-radius: 20%;
-        color: var(--secondary-color);
+        border-radius: 5px;
+        color: white;
         padding: 1rem;
-        background: var(--primary-color);
+        background: rgb(185, 19, 9);
         transition: 0.2s background;
         margin-top: 5%;
+        width: 100%;
+        max-width: 200px;
+        min-width: 100px;
         height: auto;
-        width: 75%;
         font-size: 1rem;
         cursor: pointer;
         text-align: center;
         font-weight: bold;
-    }
+}
 
-    button:hover {
+button:hover {
         background-color: var(--secondary-color);
         color: var(--hover-color);
     }
@@ -350,13 +358,14 @@ class LocalVisitante extends Juegos
 
     .logo-container {
         position: absolute;
-        top: 2%;
+        top: 0%;
         left: 0;
     }
 
     #Logo {
         height: 3em;
-        top: 0;
+        margin-top: 20%;
+        margin-left: 20%;
     }
 
     h1 {
@@ -364,7 +373,7 @@ class LocalVisitante extends Juegos
         top: 1.25%;
         left: 7%;
         font-size: 1.5em;
-        color: crimson;
+        color: rgb(185, 19, 9);
         font-weight: bold;
     }
 
@@ -374,7 +383,7 @@ class LocalVisitante extends Juegos
         left: 50%; /* Centra horizontalmente */
         transform: translateX(-50%); /* Ajusta el centro */
         text-align: center;
-        color: white;
+        color: gold;
         margin-bottom: 0; /* Elimina márgenes para un mejor posicionamiento */
         padding: 2%; /* Puedes ajustar el padding si lo deseas */
     }

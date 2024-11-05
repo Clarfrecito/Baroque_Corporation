@@ -10,25 +10,38 @@ verificar_sesion();
     <title>Información</title>
     <style>
         :root {
-            --primary-color: rgb(0, 0, 0);
-            --secondary-color: #00BAFF;
-            --hover-color: rgb(255, 255, 255);
-        }
+        --primary-color: rgb(0, 0, 0);
+        --secondary-color: rgb(61, 12, 8);
+        --hover-color: rgb(255, 255, 255);
+         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #121212;
-            color: #e0e0e0;
-            text-align: center;
-        }
+        font-family: "Questrial", sans-serif;
+        background-color: #1E1E1E;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        background-image: url('../../fondoM.PNG');
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: center;
+    }
 
         h1 {
-            color: #bb86fc;
+            margin-top: 3%;
+            color: rgb(185, 19, 9);
+            font-size: 2.5rem;
+            font-family: "Questrial", sans-serif;
         }
 
         h3{
-            color: burlywood;
+            margin-top: 5%;
+            font-family: "Questrial", sans-serif;
+            font-size: 1rem;
+            color: rgb(142, 142, 142);
         }
 
         h2{
@@ -38,29 +51,33 @@ verificar_sesion();
         .game-rules {
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #1f1f1f;
+            background-color: rgb(185, 19, 9);
             border-radius: 8px;
         }
 
         .game-rules h2 {
-            color: #03dac6;
+            color: rgb(185, 19, 9);
         }
 
         .game-rules p {
-            color: #b0b0b0;
+            color: rgb(185, 19, 9);
+            font-family: 'Questrial', sans-serif;
         }
 
         button {
+            font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+            font-size: 16px; /* Ajusta el tamaño de la fuente según lo necesites */
+            letter-spacing: 0.075em;
             box-sizing: border-box;
             border: 0;
-            border-radius: 20%;
-            color: var(--secondary-color);
+            border-radius: 5px;
+            color: white;
             padding: 1rem;
-            background: var(--primary-color);
+            background: rgb(185, 19, 9);
             transition: 0.2s background;
-            margin-top: 5%;
+            margin-top: 100%;
             height: auto;
-            width: 10%;
+            width: 100%;
             font-size: 1rem;
             cursor: pointer;
             text-align: center;
@@ -71,6 +88,23 @@ verificar_sesion();
             background-color: var(--secondary-color);
             color: var(--hover-color);
         }
+
+    a {
+        font-family: 'Questrial', sans-serif;
+        color: rgb(176, 137, 7 );
+        text-decoration: underline;
+        font-size: 2rem;
+    }
+
+    p {
+        font-family: 'Questrial', sans-serif;
+        color: white;
+        font-size: 1.5rem;
+        margin-left: 5%;
+        margin-right: 5%;
+        text-align: justify;
+    }
+
     </style>
 </head>
 <body>
@@ -82,7 +116,8 @@ verificar_sesion();
        el archivo que dice "Entrega final", ahí estará la carpeta comprimida con lso archivos)
     </p>
     <!--PONER LINK DEL GITHUB-->
-    <h2>https://github.com/Clarfrecito/Baroque-Corporation/tree/main/Dulce%20Azar</h2>
+
+    <a href="https://github.com/Clarfrecito/Baroque-Corporation/tree/main/Dulce%20Azar" class="Link al Repositorio">Ver Analisis</a>
 
     <h3>Cualquier inconveniente, consulta o sugerencia no dude en enviarla al: 11 5964-2186</h3>
     <form method="POST" action="menu_principal.php">

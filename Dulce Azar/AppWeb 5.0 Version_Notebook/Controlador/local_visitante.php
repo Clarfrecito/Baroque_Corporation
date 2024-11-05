@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else if (isset($_POST['apostar2'])) {
         $apuesta = isset($_POST['posicion']) ? $_POST['posicion'] : null;
         if ($apuesta !== null) {
-            echo "<h2>Apostaste por: " . htmlspecialchars($apuesta) . "</h2>";
+            echo "<h5>Apostaste por: " . htmlspecialchars($apuesta) . "</h5>";
             $LocalVisitanteControlador->procesarApuesta($apuesta);
         } else {
             echo "No se ha definido una apuesta.<br>";
@@ -30,8 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <div class="logo-container">
+<div class="logo-container">
+        <a href="../Vista/menu_principal.php">
         <img src="../../DulceAzar.png" alt="Logo" id="Logo">
+        </a>
     </div>
 </body>
 

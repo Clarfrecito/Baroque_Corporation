@@ -12,7 +12,7 @@ verificar_sesion();
     <style>
         :root {
             --primary-color: rgb(0, 0, 0);
-            --secondary-color: #00BAFF;
+            --secondary-color: rgb(61, 12, 8);
             --hover-color: rgb(255, 255, 255);
         }
 
@@ -22,6 +22,10 @@ verificar_sesion();
             background-color: #121212;
             color: #e0e0e0;
             text-align: center;
+            background-image: url('../../fondoM.PNG');
+            background-size: cover;
+            background-repeat: repeat;
+            background-position: center;
         }
 
         h1 {
@@ -44,26 +48,30 @@ verificar_sesion();
         }
 
         button {
-            box-sizing: border-box;
-            border: 0;
-            border-radius: 20%;
-            color: var(--secondary-color);
-            padding: 1rem;
-            background: var(--primary-color);
-            transition: 0.2s background;
-            margin-top: 5%;
-            height: auto;
-            width: 10%;
-            font-size: 1rem;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
+        font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+        font-size: 16px; /* Ajusta el tamaño de la fuente según lo necesites */
+        letter-spacing: 0.075em;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        padding: 1rem;
+        background: rgb(185, 19, 9);
+        transition: 0.2s background;
+        margin-top: 4.5%;
+        height: auto;
+        width: 7%;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
         }
 
         button:hover {
             background-color: var(--secondary-color);
             color: var(--hover-color);
         }
+
     </style>
 </head>
 
@@ -74,7 +82,7 @@ verificar_sesion();
         <p>El juego consiste en apostar el rango de cartas correcto (de a 10) en el que saldrá la carta 1 de oro. Se
             tirarán todas las 50 cartas hasta que salga esa. Si la apuesta del usuario es correcta y la carta sale en ese
             rango especificado, el usuario gana, sino pierde. Al acertar en el rango apostado, la ganancia será de 3000 caramelos,
-            si se apuesta por un rango erróneo se perderan 1000 caramelos.
+            si se apuesta por un rango erróneo se perderán 1000 caramelos.
         </p>
     </div>
 
@@ -89,10 +97,9 @@ verificar_sesion();
             perdera 1000 caramelos.
         </p>
     </div>
-    <!--Nota: Nota: Los caramelos son pertenecientes a cada juego, cada usuario tiene una cantidad de caramelos, separada, para los dos juegos. -->
+    <!-- <p>Nota: Los caramelos son pertenecientes a cada juego, cada usuario tiene una cantidad de caramelos, separada, para los dos juegos.</p> -->
     <form method="POST" action="menu_principal.php">
         <button type="submit">Volver</button>
     </form>
 </body>
-
 </html>

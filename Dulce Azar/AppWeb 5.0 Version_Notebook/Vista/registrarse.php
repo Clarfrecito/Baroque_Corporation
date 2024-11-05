@@ -40,8 +40,9 @@
 <style>
     :root {
         --primary-color: rgb(0, 0, 0);
-        --secondary-color: #00BAFF;
+        --secondary-color: rgb(61, 12, 8);
         --hover-color: rgb(255, 255, 255);
+
     }
 
     body {
@@ -53,6 +54,10 @@
         justify-content: center;
         text-align: center;
         color: #fff;
+        background-image: url('../../Fondo.PNG');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 
 
@@ -65,23 +70,27 @@
     }
 
     footer {
-        margin-top: 3%;
+        margin-top: 3.7%;
         color: #fff;
         text-align: center;
+        height: auto;
     }
 
     button {
+        font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+        font-size: 16px; /* Ajusta el tamaño de la fuente según lo necesites */
+        letter-spacing: 0.075em;
         box-sizing: border-box;
         border: 0;
-        border-radius: 10px;
-        color: var(--secondary-color);
+        border-radius: 5px;
+        color: white;
         padding: 1rem;
-        background: var(--primary-color);
+        background: rgb(185, 19, 9);
         transition: 0.2s background;
-        margin-top: 5%;
-        margin-bottom: 1rem;
+        margin-top: 10%;
+        margin-bottom: 5%;
         height: auto;
-        width: 60%;
+        width: 75%;
         font-size: 1rem;
         cursor: pointer;
         text-align: center;
@@ -90,7 +99,7 @@
 
     button:hover {
         background-color: var(--secondary-color);
-        color: var(--hover-color);
+
     }
 
     .div-contenedor {
@@ -100,19 +109,19 @@
         align-items: center;
         justify-content: center;
         padding: 2vw;
-        background-color: #1E1E1E;
-        border: 3px solid rgb(255, 255, 255);
-        border-radius: 5%;
+        background-color: rgba(0, 0, 0, 0.7);
         width: 80%;
         max-width: 1200px;
         min-height: 25vh;
     }
 
     h1 {
+        margin-top: 5%;
+        margin-bottom: 15%;
         font-size: 2rem;
         font-weight: normal;
         letter-spacing: 0.025em;
-        margin-bottom: 20%;
+        
     }
 
     h3 {
@@ -122,12 +131,19 @@
     }
 
     input {
+        font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+        font-size: 16px; /* Ajusta el tamaño de la fuente según lo necesites */
+        letter-spacing: 0.075em;
         border-radius: 10px;
         height: 25px;
-        background-color: #1E1E1E;
+        background-color: rgb(15, 15, 15, 0.5);
         cursor: pointer;
         border: 1.5px solid white;
-        width: 150px;
+        width: 90%;
+        color: white;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: 16px;
     }
 
     input:focus {
@@ -138,7 +154,7 @@
 
     img {
         margin-top: 10px;
-        height: 15%;
+        height: 20%;
         position: absolute;
         top: 0;
         right: 0;

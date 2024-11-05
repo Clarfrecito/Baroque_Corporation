@@ -14,12 +14,14 @@ verificar_sesion();
 
 <body>
   <header>
+    <a href="menu_principal.php">
     <img src="../../DulceAzar.png" alt="Logo">
+    </a>
   </header>
   <main>
     <h1>Manchita</h1>
     <div class="div-contenedor" id="div1">
-      <h1>El Juego de la Manchita</h1>
+      <h2>El Juego de la Manchita</h2>
       <form method="POST" action="../Controlador/manchita.php">
         
       <button onclick="showSecondDiv(event)" type="button" value="Jugar Manchita" name="jugarManchita">Jugar</button>
@@ -54,7 +56,7 @@ verificar_sesion();
 <style>
   :root {
     --primary-color: rgb(0, 0, 0);
-    --secondary-color: #00BAFF;
+    --secondary-color: rgb(61, 12, 8);
     --hover-color: rgb(255, 255, 255);
   }
 
@@ -66,7 +68,10 @@ verificar_sesion();
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    background-image: url('../../Fondo.PNG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   main {
@@ -78,29 +83,34 @@ verificar_sesion();
   }
 
   footer {
-    margin-top: 103px;
+    margin-bottom: auto;
+    margin-top: 5%;
     color: #fff;
     text-align: center;
   }
 
   button {
+    font-family: 'Questrial', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.075em;
     box-sizing: border-box;
     border: 0;
-    border-radius: 20px;
-    color: var(--secondary-color);
+    border-radius: 5px;
+    color: white;
     padding: 1rem;
-    background: var(--primary-color);
+    background: rgb(185, 19, 9);
     transition: 0.2s background;
-    margin-bottom: 15px;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 100%;
+    max-width: 200px;
+    min-width: 100px;
     height: auto;
-    width: 145px;
-    font-size: 15px;
+    font-size: 1rem;
     cursor: pointer;
     text-align: center;
     font-weight: bold;
-  }
+}
 
   button:hover {
     background-color: var(--secondary-color);
@@ -108,22 +118,32 @@ verificar_sesion();
   }
 
   .div-contenedor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #1E1E1E;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 5%;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 70%;
+  max-width: 1200px;
+  min-height: 25vh;
+}
 
   h1 {
     font-size: 2rem;
     font-weight: normal;
     letter-spacing: 0.025em;
+    margin-top: auto;
+    color: white;
   }
 
+  h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.025em;
+    margin-top: auto;
+    color: white;
+  }
 
   h3 {
     font-size: 1rem;
@@ -157,10 +177,10 @@ verificar_sesion();
   select {
     box-sizing: border-box;
     border: 0;
-    border-radius: 20px;
-    color: var(--secondary-color);
+    border-radius: 5px;
+    color: white;
     padding: 1rem;
-    background: var(--primary-color);
+    background: rgb(185, 19, 9);
     transition: 0.2s background;
     margin-bottom: 15px;
     margin-left: 25px;

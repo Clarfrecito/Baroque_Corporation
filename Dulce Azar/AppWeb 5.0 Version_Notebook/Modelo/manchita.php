@@ -138,7 +138,7 @@ class Manchita extends Juegos
             echo '<img src="../images/' . $imagen . '" alt="' . $sale . '">'; // Mostrar la imagen de la carta
 
             if ($sale == "1 de Oros") {
-                $manchita = "<br>La manchita salió en la posición $posicion<br>";
+                $manchita = "<h5>La manchita salió en la posición $posicion<h5>";
                 $ganancia = in_array($i + 1, $apuesta) ? 3000 : -1000;
                 $this->ganancias($ganancia);
                 echo '</div>'; // Cerrar el div de la carta antes de salir
@@ -218,56 +218,96 @@ class Manchita extends Juegos
 <body>
     <form action=../Vista/manchita.php>
         <div class="botonJugar">
-            <button>Volver a Jugar</button>
+            <button>Volver a Atras</button>
+        </div>
+        <div class="logo-container">
+        <a href="../Vista/menu_principal.php">
+        <img src="../../DulceAzar.png" alt="Logo" id="Logo">
+        </a>
         </div>
     </form>
 </body>
 <style>
     :root {
         --primary-color: rgb(0, 0, 0);
-        --secondary-color: #00BAFF;
+        --secondary-color: rgb(61, 12, 8);
         --hover-color: rgb(255, 255, 255);
     }
 
     body {
         font-family: "Questrial", sans-serif;
-        background-color: #1E1E1E;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        background-image: url('../../FondoM.PNG');
+        background-size: 100%;
+        background-repeat: repeat;
+        background-position: center;
     }
 
     button {
+        font-family: 'Questrial', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.075em;
         box-sizing: border-box;
         border: 0;
-        border-radius: 20%;
-        color: var(--secondary-color);
+        border-radius: 5px;
+        color: white;
         padding: 1rem;
-        background: var(--primary-color);
+        background: rgb(185, 19, 9);
         transition: 0.2s background;
         margin-top: 5%;
+        width: 100%;
+        max-width: 200px;
+        min-width: 100px;
         height: auto;
-        width: 75%;
         font-size: 1rem;
         cursor: pointer;
         text-align: center;
         font-weight: bold;
-    }
+}
 
     button:hover {
         background-color: var(--secondary-color);
         color: var(--hover-color);
     }
 
+    h1 {
+        position: absolute;
+        top: 1.25%;
+        left: 7%;
+        font-size: 1.5em;
+        color: rgb(185, 19, 9);
+        font-weight: bold;
+    }
+
+    h2 {
+        margin-top: 8%;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
     h4 {
         text-align: center;
         position: absolute;
-        top: 15%;
+        top: 8%;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 2rem;
+        font-size: 2.5rem;
+        color:rgb(185, 19, 9);
+    }
+
+    h5 {
+        text-align: center;
+        position: absolute;
+        top: 27%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        color: gold;
     }
 
     .cartas {
@@ -275,7 +315,7 @@ class Manchita extends Juegos
         grid-template-columns: repeat(10, 1fr);
         gap: 5px;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 2%;
     }
 
     .carta {
@@ -287,27 +327,26 @@ class Manchita extends Juegos
     .carta img {
         width: 100px;
         height: 150px;
-        /* Escalar la imagen para cubrir todo el contenedor */
     }
 
     .logo-container {
         position: absolute;
-        top: 2%;
+        top: 0%;
         left: 0;
     }
 
     #Logo {
         height: 3em;
+        margin-top: 20%;
+        margin-left: 20%;
     }
 
     #carame {
-        width: 3%;
-        /* Ajusta el ancho del caramelo */
-        height: 6%;
-        /* Ajusta la altura del caramelo */
-        position: absolute;
-        top: 3%;
-        left: 89.5%;
+    width: 3%;  /* Ajusta el ancho del caramelo */
+    height: 6%; /* Ajusta la altura del caramelo */
+    position: absolute;
+    top: 3%;
+    left: 89.5%;
     }
 
     #cant {
@@ -317,20 +356,7 @@ class Manchita extends Juegos
         top: 1.5%;
         left: 94%;
     }
-
-    h1 {
-        position: absolute;
-        top: 0.5%;
-        left: 5%;
-        font-size: 2em;
-        color: crimson;
-        font-weight: bold;
-    }
-
-    h2 {
-        text-align: center;
-        color: white;
-    }
+    
 </STYLE>
 
 </html>

@@ -30,10 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Manchita</h1>
 </head>
 
-<body>
-    <div class="logo-container">
-        <img src="../../DulceAzar.png" alt="Logo" id="Logo">
-    </div>
-</body>
+
 
 </html>

@@ -1,5 +1,4 @@
 <?php
-//Terminar L/V
 require_once 'conex_bd.php';
 require_once 'juegos.php';
 require_once '../Utiles/verificar_sesion.php';
@@ -219,7 +218,8 @@ class LocalVisitante extends Juegos
             $stmt->bind_param("si", $usuario, $caramelos);
 
             if ($stmt->execute()) {
-                echo "Registro de caramelos creado correctamente.";
+                echo '<h3 id="cant">' . $caramelos . '</h3>';
+                echo '<img src="../images/caramelo.png" alt="Caramelo" id="carame">';
             } else {
                 echo "Error al crear el registro: " . $stmt->error;
             }
@@ -243,7 +243,7 @@ class LocalVisitante extends Juegos
 
     <form action=../Vista/local_visitante.php>
         <div class="botonJugar">
-            <button>Volver a Jugar</button>
+            <button>Volver a Atras</button>
         </div>
     </form>
 
@@ -251,38 +251,46 @@ class LocalVisitante extends Juegos
 <style>
     :root {
         --primary-color: rgb(0, 0, 0);
-        --secondary-color: #00BAFF;
+        --secondary-color: rgb(61, 12, 8);
         --hover-color: rgb(255, 255, 255);
     }
 
     body {
         font-family: "Questrial", sans-serif;
-        background-color: #1E1E1E;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        background-image: url('../../FondoM.PNG');
+        background-size: 100%;
+        background-repeat: repeat;
+        background-position: center;
     }
 
     button {
+        font-family: 'Questrial', sans-serif;
+        font-size: 16px;
+        letter-spacing: 0.075em;
         box-sizing: border-box;
         border: 0;
-        border-radius: 20%;
-        color: var(--secondary-color);
+        border-radius: 5px;
+        color: white;
         padding: 1rem;
-        background: var(--primary-color);
+        background: rgb(185, 19, 9);
         transition: 0.2s background;
         margin-top: 5%;
+        width: 100%;
+        max-width: 200px;
+        min-width: 100px;
         height: auto;
-        width: 75%;
         font-size: 1rem;
         cursor: pointer;
         text-align: center;
         font-weight: bold;
-    }
+}
 
-    button:hover {
+button:hover {
         background-color: var(--secondary-color);
         color: var(--hover-color);
     }
@@ -329,33 +337,35 @@ class LocalVisitante extends Juegos
 
     #car {
         text-align: center;
-        color: cyan;
+        color: white;
     }
 
     #cant {
         color: orange;
         font-weight: bold;
         position: absolute;
-        top: 2%;
+        top: 1.5%;
         left: 94%;
     }
 
     #carame {
-    width: 2%;  /* Ajusta el ancho del caramelo */
-    height: 5%; /* Ajusta la altura del caramelo */
+    width: 3%;  /* Ajusta el ancho del caramelo */
+    height: 6%; /* Ajusta la altura del caramelo */
     position: absolute;
-    top: 2%;
+    top: 3%;
     left: 89.5%;
     }
 
     .logo-container {
         position: absolute;
-        top: 2%;
+        top: 0%;
         left: 0;
     }
 
     #Logo {
         height: 3em;
+        margin-top: 20%;
+        margin-left: 20%;
     }
 
     h1 {
@@ -363,21 +373,36 @@ class LocalVisitante extends Juegos
         top: 1.25%;
         left: 7%;
         font-size: 1.5em;
-        color: crimson;
+        color: rgb(185, 19, 9);
         font-weight: bold;
     }
 
     h2 {
+        position: absolute; /* O fixed, dependiendo de tu necesidad */
+        bottom: 1%; /* Posiciona el elemento en la parte inferior */
+        left: 50%; /* Centra horizontalmente */
+        transform: translateX(-50%); /* Ajusta el centro */
         text-align: center;
         color: gold;
-        margin-top: 3%;
+        margin-bottom: 0; /* Elimina márgenes para un mejor posicionamiento */
+        padding: 2%; /* Puedes ajustar el padding si lo deseas */
     }
+
 
     h4 {
         text-align: center;
         position: absolute;
-        top: 8%;
-        left: 90.5%;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+    }
+
+    h5 {
+        text-align: center;
+        color: white;
+        margin-top: 3%;
+        font-size: 2rem;
     }
 </style>
 
