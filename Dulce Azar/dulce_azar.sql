@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-11-2024 a las 13:31:01
+-- Tiempo de generación: 17-11-2024 a las 20:51:43
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.3.7
 
@@ -193,7 +193,16 @@ INSERT INTO `juegos` (`id`, `id_usuario`, `nombre`, `sesion_juego`) VALUES
 (265, 3, 'manchita', '2024-11-05 12:55:15'),
 (266, 3, 'Local/Visitante', '2024-11-05 13:02:14'),
 (267, 3, 'manchita', '2024-11-05 13:10:04'),
-(268, 3, 'Local/Visitante', '2024-11-05 13:10:44');
+(268, 3, 'Local/Visitante', '2024-11-05 13:10:44'),
+(269, 3, 'manchita', '2024-11-05 13:33:08'),
+(270, 3, 'Local/Visitante', '2024-11-05 13:33:15'),
+(271, 3, 'Local/Visitante', '2024-11-05 13:33:37'),
+(272, 3, 'manchita', '2024-11-08 12:54:53'),
+(273, 3, 'Local/Visitante', '2024-11-08 12:55:23'),
+(274, 3, 'manchita', '2024-11-10 19:26:57'),
+(275, 3, 'Local/Visitante', '2024-11-10 19:27:05'),
+(276, 3, 'Local/Visitante', '2024-11-15 12:31:48'),
+(277, 3, 'manchita', '2024-11-15 12:32:05');
 
 -- --------------------------------------------------------
 
@@ -212,7 +221,7 @@ CREATE TABLE `local_visitante` (
 --
 
 INSERT INTO `local_visitante` (`id`, `usuario`, `caramelos`) VALUES
-(1, 'ser', 172000),
+(1, 'ser', 181000),
 (2, 'Pipolanga', 7000),
 (3, 'Pablo', 1000);
 
@@ -233,7 +242,7 @@ CREATE TABLE `manchita` (
 --
 
 INSERT INTO `manchita` (`id`, `usuario`, `caramelos`) VALUES
-(3, 'ser', 2000),
+(3, 'ser', 0),
 (4, 'Pipolanga', 0),
 (5, 'nuevo123', 3000),
 (6, 'Pablo', 3000);
@@ -301,7 +310,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `juegos`
 --
 ALTER TABLE `juegos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=278;
 
 --
 -- AUTO_INCREMENT de la tabla `local_visitante`

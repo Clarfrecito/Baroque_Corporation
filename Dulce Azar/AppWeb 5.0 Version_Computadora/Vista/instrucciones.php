@@ -29,18 +29,31 @@ verificar_sesion();
         }
 
         h1 {
-            color: #bb86fc;
+            color: rgb(185, 19, 9);
+        }
+
+        p {
+            color: whitesmoke;
+            font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+            font-size: 16px; /* Ajusta el tamaño de la fuente según lo necesites */
+            text-align: justify;
+            margin-left: 2%;
+            margin-right: 2%;
         }
 
         .game-rules {
             margin-bottom: 20px;
             padding: 15px;
-            background-color: #1f1f1f;
+            background-color: black;
+            opacity: 0.7;
             border-radius: 8px;
         }
 
         .game-rules h2 {
-            color: #03dac6;
+            font-family: 'Questrial', sans-serif; /* Usa la fuente Questrial */
+            font-size: 28px; /* Ajusta el tamaño de la fuente según lo necesites */
+            margin-top: 0.5%;
+            color: rgb(185, 19, 9);
         }
 
         .game-rules p {
