@@ -29,20 +29,20 @@ class Usuario
                     } else {
                         echo '<script>
                                 alert("Ha ocurrido un error al registrar.");
-                                window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                                window.location.href = "http://localhost/AppWeb%205.0%20Version_Notebook/Vista/registrarse.php";
                              </script>';
                     }
                     $stmt->close();
                 } else {
                     echo '<script>
                             alert("Los datos ingresados no son correctos");
-                            window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                            window.location.href = "http://localhost/AppWeb%205.0%20Version_Notebook/Vista/registrarse.php";
                          </script>';
                 }
             } else {
                 echo '<script>
                         alert("Por favor complete todos los datos.");
-                        window.location.href = "http://localhost/AppWeb%205.0/Vista/registrarse.php";
+                        window.location.href = "http://localhost/AppWeb%205.0%20Version_Notebook/Vista/registrarse.php";
                      </script>';
             }
         } else {
