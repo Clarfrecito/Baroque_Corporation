@@ -83,13 +83,13 @@ class Usuario
                 } else {
                     echo '<script>
                     alert("Contraseña incorrecta.");
-                    window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
+                    window.location.href = http://localhost/AppWeb%205.0%20Version_Notebook/Vista/login.php";
                  </script>';
                 }
             } else {
                 echo '<script>
                 alert("Usuario no encontrado.");
-                window.location.href = "http://localhost/AppWeb%205.0/Vista/login.php";
+                window.location.href = "http://localhost/AppWeb%205.0%20Version_Notebook/Vista/login.php";
              </script>';
             }
             $stmt->close();
